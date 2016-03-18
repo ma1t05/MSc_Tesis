@@ -21,15 +21,17 @@
 \def\autor{Luis Alberto Maltos Ortega}
 \def\matricula{1390200}
 \def\grado{Maestría en Ciencias en Ingenie\'ia de Sistemas}
-% En caso de que el grado tenga orientación o especialidad llenar el siguiente
-% campo dejando un ESPACIO INICIAL, en caso contrario, dejar vacío
+% En caso de que el grado tenga orientación o especialidad
+% llenar el siguiente campo dejando un ESPACIO INICIAL,
+% en caso contrario, dejar vacío
 \def\orientacion{ }
 \def\fecha{\monthname,  \the\year} % Coloca el mes con mayúscula inicial
 
 \def\asesor{Dr. Roger Z. R\'ios}
 \def\revisorA{Mar\'ia Ang\'elica Salazar Aguilar}
 \def\revisorB{Mar\'ia Guadalupe Villareal Marroqu\'in}
-% En el caso de que tu tesis sea de doctorado activa la variable cambiándola a \doctoradotrue
+% En el caso de que tu tesis sea de doctorado
+% activa la variable cambiándola a \doctoradotrue
 % y define tus otros dos revisores
 \newif\ifdoctorado\doctoradofalse
 \def\revisorC{Nombre del revisor C}
@@ -47,26 +49,26 @@
 
 %%% Incluye PortillasM si tu tesis es de Maestría
 %%% y PortillasD si es de doctorado.
-\include{Portadas}
-\include{Dedicatoria}
+\include{Misc/Cover}
+\include{Misc/Dedicatory}
 
 \tableofcontents
 \listoffigures
 \listoftables
 
-\include{Agradecimientos}
-\include{Resumen}
+\include{Misc/Acknowledgements}
+\include{Misc/Abstract}
 
 \mainmatter
 \pagestyle{fime}
 
 %%% Haz un documento para cada capítulo
-\include{Introduction}
-\include{Models}
+\include{Introduction/Main}
+\include{Models/Main}
 
 \appendix
 %%% Haz un documento para cada apéndice
-\include{Apendice}
+\include{Appendices/Apendice}
 
 \backmatter
 \pagestyle{main}
@@ -80,6 +82,6 @@
 \bibliography{MiBiblio}
 
 \label{lastpage}
-\include{Autobiografia}
+\include{Misc/Autobiography}
 
 \end{document}
