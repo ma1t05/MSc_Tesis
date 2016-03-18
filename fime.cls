@@ -17,7 +17,7 @@
 \usepackage{amsmath,amsfonts,amssymb}
 	\allowdisplaybreaks[4]
 \usepackage{graphicx}
-	\graphicspath{{Figuras/}}
+	\graphicspath{{Figures/}}
 \usepackage[clearempty,pagestyles]{titlesec}
 	\setcounter{secnumdepth}{4}
 
