@@ -1,0 +1,21 @@
+\begin{algorithm}
+  \hline \vspace{3pt}
+  \caption{Path Relinking Combination Method}\label{pr_combination}
+  \vspace{3pt} \hline
+  \begin{algorithmic}[0]
+    \Procedure{PahtRelinkingCombination}{$RefSet,Solutions$}
+    \ForAll{$(x,y) \in Solutions$}
+    \State $match \gets Matching(x,y)$
+    \Comment{perfect,workload,random}
+    \State $order \gets ProcessOrder(x,match,y)$
+    \Comment{nearest/farthest first,random}
+    \For{$i \gets 1,p$}
+    \State $j \gets order[i]$
+    \If{$x.ServerLocation(j) != y.ServerLocation(match[j])$}
+    \State $x.SetServerLocation(j,y.ServerLocation(match[j]))$
+    \State $RefSet.Update(x)$
+    \EndIf \EndFor \EndFor
+    \EndProcedure
+    \hline
+  \end{algorithmic}
+\end{algorithm}
