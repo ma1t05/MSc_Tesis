@@ -1,0 +1,57 @@
+\section{Hypercube}
+% source: galvao2008emergency
+The hypercube model
+is not an optimization model; 
+it is only a descriptive model
+that permits the analysis of scenarios
+
+Given a system configuration,
+the hypercube model
+is able to evaluate
+a variety of performance measures relevant for decision-making,
+either region-wide or for each server or region. 
+These include
+server workloads,
+mean user response times,
+fraction of dispatches of each server to each region,
+among others.
+
+\subsection{Calibration Process}
+% source: galvao2008emergency
+% Calibration process of the mean service times
+In certain EMSs
+and other emergency systems,
+travel times may represent
+a considerable part of service times.
+In such cases,
+it may be advisable
+to adjust the service times
+by means of a calibration process,
+which can be performed
+using a simple iterative procedure.
+Basically,
+the procedure consists of
+verifying
+if there are
+significant differences among the input mean service times
+and the output mean service times (computed by the hypercube model).
+In this case,
+the hypercube is solved
+using the computed mean service times as inputs,
+until
+the differences
+among input and output values
+are sufficiently small.
+This procedure is called
+a calibration process.
+Note that
+it takes into account
+that the mean travel time
+depends on the location of the user
+and the identity of the server.
+Empirical experiments show
+that this procedure
+usually converges in two or three iterations,
+for a reasonably accurate estimation of the mean service times,
+although a formal proof of the convergence of the method
+is apparently not available in the literature.

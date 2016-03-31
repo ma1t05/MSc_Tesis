@@ -1,0 +1,56 @@
+\documentclass{fime}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Cargando paquetes y definiendo opciones %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Aquí puedes cargar los paquetes que vas a usar. La clase
+% fime ya incluye babel, inputenc, graphicx y los de la AMS.
+% Cargar un paquete está a tu libertad (y responsabilidad).
+\usepackage{hyperref}
+    \hypersetup{breaklinks=true,colorlinks=true,
+        linkcolor=black,citecolor=black,urlcolor=black}
+\usepackage{datetime} % monthname
+\usepackage{todonotes} % temporaly use for todo notes
+
+%%%%%%%%%%%%%%%%%%%%%
+% Definiendo campos %
+%%%%%%%%%%%%%%%%%%%%%
+\def\titulo{Optimal Location of Car Wreck Adjusters}
+\def\autor{Luis Alberto Maltos Ortega}
+\def\matricula{1390200}
+\def\grado{Maestría en Ciencias en Ingenie\'ia de Sistemas}
+% En caso de que el grado tenga orientación o especialidad
+% llenar el siguiente campo dejando un ESPACIO INICIAL,
+% en caso contrario, dejar vacío
+\def\orientacion{ }
+\def\fecha{\monthname,  \the\year} % Coloca el mes con mayúscula inicial
+
+\def\asesor{Dr. Roger Z. R\'ios}
+\def\revisorA{Mar\'ia Ang\'elica Salazar Aguilar}
+\def\revisorB{Mar\'ia Guadalupe Villareal Marroqu\'in}
+% En el caso de que tu tesis sea de doctorado
+% activa la variable cambiándola a \doctoradotrue
+% y define tus otros dos revisores
+\newif\ifdoctorado\doctoradofalse
+\def\revisorC{Nombre del revisor C}
+\def\revisorD{Nombre del revisor D}
+% El visto bueno siempre va
+\def\vobo{Dr. Simón Martínez Martínez}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Inicia el documento %
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+The notion of coverage
+implies
+the definition of a service distance (time),
+which is the critical distance (time)
+beyond which a demand area is considered not covered.
+A demand area is
+therefore
+considered covered
+if
+it is within a predefined critical distance (say D)
+from at least one of the existing facilities.
+
+\end{document}
