@@ -1,6 +1,6 @@
 \chapter{Methodology}
 In this chapter
-we describe the solution metodology proposed
+we describe the solution methodology proposed
 to solve the described problem.
 
 A first model was created
@@ -10,44 +10,33 @@ we made some relaxations
 instead obtaining a linear model.
 
 Proposed a second model
-that performs an aditional simplification,
+that performs an additional simplification,
 considering that
+it is unlikely
+assign an adjuster
+to a demand point
+covered previously
+by more adjusters,
+omitting allocation variables
+and adding restrictions
+to guarantee
+the correct order of allocation.
 
-las probabilidades de asignar
-un ajustador 
-a un punto de demanda
-que es cubierto prebiamente por mas ajustadores
-es muy poca,
-se omiten variables de asignacion,
-y se agregan variables y restricciones
-para garantizar
-el correcto orden de asignacion
+Because the problem stochasticity
+can not evaluate solutions accurately,
+so the Hypercube model is used.
 
-Debido a la stocacidad del problema
-no se puede evaluar de manera exacta
-cada una de las soluciones,
-para ello se utiliza el modelo del hypercubo
+Several functions were evaluated
+for constructive algorithm
+but because presented cooperativeness
+it is difficult
+to approximate the final results
+in a partial solution
+with a greedy function.
 
-Se evaluaron varias funciones
-para el metodo constructivo
-debido a la cooperatividad que se presenta
-es dificil
-captar parte de los resultados finales
-en una solucion parcial
-con una funcion greedy.
-Por lo cual se opto
-por un algoritmo multi-arranque.
-
-Para mejorar estas soluciones,
-se implemento una busqueda dispersa
-con dos niveles y conjunto de refencia dinamico
-
-Se opto por mantener dos nivles
-ya que
-la diversidad
-se perdia facilmente
-al realizar las primeras cruzas,
-y se opto
-por el conjunto de refencia dinamico
-ya que una gran cantidad de soluciones se generan
-en cada cruza
+To improve these solutions,
+a scatter-search was implemented
+with a dynamic reference set.
+We opted for a dynamic reference set
+due the number of solutions generated
+in each combination is big.
