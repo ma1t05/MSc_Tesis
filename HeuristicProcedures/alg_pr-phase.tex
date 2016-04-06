@@ -1,0 +1,22 @@
+\begin{algorithm}
+  \hline \vspace{3pt}
+  \caption{Path Relinking Phase}\label{pr_phase}
+  \vspace{3pt} \hline
+  \begin{algorithmic}[0]
+    \Procedure{SubsetControl}{$RefSet$}
+    \State $SubsetType \gets 0$
+    \State $NowTime \gets 0$
+    \While{$!StopCondition$}
+    \State $SubsetType \gets next(SubsetType)$
+    \State $NowTime \gets NowTime + 1$
+    \State $iNew \gets NumberOfNewSols(RefSet,SubsetType)$
+    \If{$iNew = 0$}
+    \State $exit$
+    \EndIf
+    \State $Call SubsetType.Algorithm(RefSet)$
+    \State $LastRun[SubsetType] \gets NowTime$
+    \EndWhile
+    \EndProcedure
+    \hline
+  \end{algorithmic}
+\end{algorithm}
