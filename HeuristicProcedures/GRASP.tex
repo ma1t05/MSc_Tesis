@@ -1,0 +1,41 @@
+\section{GRASP}
+%Why did you choose GRASP?
+Because is easy,
+in the proposed problem
+any allocation of sites for adjusters
+is a feasible solution,
+so it was decided to give some intelligence
+to this allocation.
+%What does it consist?
+We start with a partial solution
+(location of a smaller number of adjusters)
+with only one adjuster allocated,
+evaluate each site with the greedy function,
+and choose one from the best $\alpha$ evaluations,
+until locate each adjuster.
+%Which evaluation functions did you use?
+We use three greedy functions
+to test the construction.
+%Fist function
+The first function,
+was the p-mean
+or the sum the distances
+of each allocation 
+from each located adjuster
+with their nearest demand points.
+%Second function
+For the second function,
+we try to incorporate cooperatively,
+including in the evaluation
+the distance of allocations
+from each located adjuster,
+with their $k$ nearest demand points
+plus \textit{idle} probability
+given that is allocated
+to their $k-1$ nearest demand points.
+%Third function
+The third function,
+consist in use the MST calibration method
+proposed by Jarvis,
+to obtain more accuracy values
+of the current mean response time.
