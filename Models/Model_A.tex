@@ -24,25 +24,32 @@ The following assumptions are considered in the model:
   using a 0-queue assumption.
 \end{itemize}
 
+Sets and indexes:
+\begin{itemize}
+\item \textit{n} number of demand points
+\item \textit{m} number of potential sites to locate adjusters/facilities
+\item \textit{p} number of available adjusters
+\item \textit{i} index for demand points;
+  $i \in V = \{1,2,\ldots,n\}$ 
+\item \textit{j} index for potential site for adjusters/facilities
+  $j \in W = \{1,2,\ldots,m\}$
+\item $\ell$ possible order;
+  $\ell \in K = \{1,2\ldots,p\}$
+\item $S_{ij} = \{
+  r \in W | r \mbox{ is preferred for } i \mbox{ before } j
+  \}$
+\end{itemize}
+
 Parameters:
 \begin{itemize}
-\item $V$ set of demand points, 
-  with $|V| = n$
-\item $W$ set of potential site for adjusters/facilities,
-  with $|W| = m$
-\item $p$ number of available adjusters
-\item $K$ set of possible orders $\{1,2\ldots,p\}$
 \item $\rho$ is the utilization of each adjuster
 \item $t_{ij}$ is the expected travel time
-  between point \textit{i}
+  between demand point \textit{i}
   and potential site \textit{j}.
-\item $h_{ij}^{k}$ is the probability
+\item $h_{ij}^{\ell}$ is the probability
   that $j$ serves point $i$
   given that
-  is the $k$-th preferred.
-\item $S_{ij} = \{
-  r \in W | t_{ir} < t_{ij}
-  \}$
+  is the $\ell$-th preferred.
 \end{itemize}
 
 Variables:
@@ -52,17 +59,19 @@ Variables:
     1 & \mbox{if an adjuster is at potential site } j \\
     0 & \mbox{otherwise}
   \end{cases}$
-\item $y_{ij}^k =
+\item $y_{ij}^{\ell} =
   \begin{cases} 
-    1 & \mbox{if adjuster in } j \mbox{, is the k-th to cover demand point }i \\
+    1 & \mbox{if adjuster in } j \mbox{, is the }
+    \ell\mbox{-th to cover demand point } i \\
     0 & \mbox{otherwise}
   \end{cases}$
 \end{itemize}
 
+Model
 {\small
   \begin{equation}
     \min \, \sum_{j=1}^{m}{
-      \sum_{\ell=1}^{k}{
+      \sum_{\ell=1}^{p}{
         \sum_{i=1}^{n}{
           h_{ij}^{\ell}t_{ij}y_{ij}^{\ell}
         }
@@ -72,30 +81,30 @@ Variables:
 }
 \begin{align}
   \label{eq:2}
-  \sum_{j \in W}{x_j} 
+  \sum_{j \in W}{x_j}
   & = p
 \end{align}
-Only locate $p$ adjusters  
+Only locate $p$ adjusters
 \begin{align}
   \label{eq:3}
-  \sum_{j \in W}{y_{ij}^{k}}
+  \sum_{j \in W}{y_{ij}^{\ell}}
   & = 1
-  & i \in V, k 
+  & i \in V, \ell
   &\in K
 \end{align}
-Each demand point $i$ is covered by an adjuster on each order $k$
+Each demand point $i$ is covered by an adjuster on each order $\ell$
 \begin{align}
   \label{eq:4}
-  y_{ij}^{k}
+  y_{ij}^{\ell}
   & \leq x_j
-  & i \in V,j \in W, k
+  & i \in V,j \in W, \ell
   &\in K
 \end{align}
 Assigned only if there is an adjuster located at $j$
 \begin{align}
   \label{eq:5}
-  \sum_{k = 1}^{p}{
-    y_{ij}^{k}
+  \sum_{\ell = 1}^{p}{
+    y_{ij}^{\ell}
   }
   & \leq x_j
   & i \in V, j 
@@ -103,24 +112,24 @@ Assigned only if there is an adjuster located at $j$
 \end{align}
 Only assign in one order for each adjuster located 
 \begin{align}
-  y_{ij}^{k} 
-  & \leq \sum_{r\in S_{ij}}{y_{ir}^{k-1}}
-  & i \in V,j \in W, k 
+  y_{ij}^{\ell} 
+  & \leq \sum_{r\in S_{ij}}{y_{ir}^{\ell-1}}
+  & i \in V,j \in W, \ell
   & \in K/\{1\}
 \end{align}
-Assign $j$ to cover $i$ in order $k$
+Assign \textit{j} to cover \textit{i} in order $\ell$
 only if
-the assign of order $k-1$
-was made for some  $r \in S_{ij}$
+the assign of order $\ell-1$
+was made for some $r \in S_{ij}$
 \begin{align}
   x_{j}
   & \in \{0,1\}
   & j 
   & \in W \nonumber
   \\
-  y_{ij}^{k}
+  y_{ij}^{\ell}
   & \in \{0,1\}
-  &  i \in V,j \in W,k
+  &  i \in V,j \in W,\ell
   &\in K \nonumber
 \end{align}
 
