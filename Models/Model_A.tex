@@ -4,7 +4,9 @@
 
 \section{Model A}
 
-This model is based on Goldberg's model \cite{goldberg1990validating},
+This model is based
+on the model
+proposed by Goldberg \cite{goldberg1990validating},
 and it contains assignment variables
 for all possible orders.
 
@@ -36,7 +38,8 @@ Sets and indexes:
 \item $k$ possible order;
   $k \in K = \{1,2\ldots,p\}$
 \item $S_{ij} = \{
-  r \in W | r \mbox{ is preferred for } i \mbox{ before } j
+  r \in W | \mbox{ site } r \mbox{ is preferred before site } j
+  \mbox{ for demand point } i
   \}$
 \end{itemize}
 
@@ -79,6 +82,7 @@ Model
     }
   \end{equation}
 }
+Minimize the average expected response time
 \begin{align}
   \label{eq:2}
   \sum_{j \in W}{x_j}
@@ -144,5 +148,5 @@ was made for some $r \in S_{ij}$
 %because they have more than 300 points,
 %and the proposed model grows to over one million variables.
 %  For some large instances ($n = 50$ , $m = 30$)%
-\todo{Add Scope}
-\todo{Computional Results}
+\todo[inline]{Add Scope}
+\todo[inline]{Computational Results}
