@@ -4,7 +4,9 @@
 
 \section{Model A}
 
-This model is based on Goldberg's model \cite{goldberg1990validating},
+This model is based
+on the model
+proposed by Goldberg \cite{goldberg1990validating},
 and it contains assignment variables
 for all possible orders.
 
@@ -24,25 +26,33 @@ The following assumptions are considered in the model:
   using a 0-queue assumption.
 \end{itemize}
 
+Sets and indexes:
+\begin{itemize}
+\item \textit{n} number of demand points
+\item \textit{m} number of potential sites to locate adjusters/facilities
+\item \textit{p} number of available adjusters
+\item \textit{i} index for demand points;
+  $i \in V = \{1,2,\ldots,n\}$ 
+\item \textit{j} index for potential site for adjusters/facilities
+  $j \in W = \{1,2,\ldots,m\}$
+\item $k$ possible order;
+  $k \in K = \{1,2\ldots,p\}$
+\item $S_{ij} = \{
+  r \in W | \mbox{ site } r \mbox{ is preferred before site } j
+  \mbox{ for demand point } i
+  \}$
+\end{itemize}
+
 Parameters:
 \begin{itemize}
-\item $V$ set of demand points, 
-  with $|V| = n$
-\item $W$ set of potential site for adjusters/facilities,
-  with $|W| = m$
-\item $p$ number of available adjusters
-\item $K$ set of possible orders $\{1,2\ldots,p\}$
 \item $\rho$ is the utilization of each adjuster
 \item $t_{ij}$ is the expected travel time
-  between point \textit{i}
+  between demand point \textit{i}
   and potential site \textit{j}.
 \item $h_{ij}^{k}$ is the probability
   that $j$ serves point $i$
   given that
   is the $k$-th preferred.
-\item $S_{ij} = \{
-  r \in W | t_{ir} < t_{ij}
-  \}$
 \end{itemize}
 
 Variables:
@@ -52,35 +62,38 @@ Variables:
     1 & \mbox{if an adjuster is at potential site } j \\
     0 & \mbox{otherwise}
   \end{cases}$
-\item $y_{ij}^k =
+\item $y_{ij}^{k} =
   \begin{cases} 
-    1 & \mbox{if adjuster in } j \mbox{, is the k-th to cover demand point }i \\
+    1 & \mbox{if adjuster in } j \mbox{, is the }
+    k\mbox{-th to cover demand point } i \\
     0 & \mbox{otherwise}
   \end{cases}$
 \end{itemize}
 
+Model
 {\small
   \begin{equation}
     \min \, \sum_{j=1}^{m}{
-      \sum_{\ell=1}^{k}{
+      \sum_{k=1}^{p}{
         \sum_{i=1}^{n}{
-          h_{ij}^{\ell}t_{ij}y_{ij}^{\ell}
+          h_{ij}^{k}t_{ij}y_{ij}^{k}
         }
       }
     }
   \end{equation}
 }
+Minimize the average expected response time
 \begin{align}
   \label{eq:2}
-  \sum_{j \in W}{x_j} 
+  \sum_{j \in W}{x_j}
   & = p
 \end{align}
-Only locate $p$ adjusters  
+Only locate $p$ adjusters
 \begin{align}
   \label{eq:3}
   \sum_{j \in W}{y_{ij}^{k}}
   & = 1
-  & i \in V, k 
+  & i \in V, k
   &\in K
 \end{align}
 Each demand point $i$ is covered by an adjuster on each order $k$
@@ -105,13 +118,13 @@ Only assign in one order for each adjuster located
 \begin{align}
   y_{ij}^{k} 
   & \leq \sum_{r\in S_{ij}}{y_{ir}^{k-1}}
-  & i \in V,j \in W, k 
+  & i \in V,j \in W, k
   & \in K/\{1\}
 \end{align}
-Assign $j$ to cover $i$ in order $k$
+Assign \textit{j} to cover \textit{i} in order $k$
 only if
 the assign of order $k-1$
-was made for some  $r \in S_{ij}$
+was made for some $r \in S_{ij}$
 \begin{align}
   x_{j}
   & \in \{0,1\}
@@ -135,3 +148,30 @@ was made for some  $r \in S_{ij}$
 %because they have more than 300 points,
 %and the proposed model grows to over one million variables.
 %  For some large instances ($n = 50$ , $m = 30$)%
+
+% Model implications
+Observe that
+we do not need
+to add a restriction
+to ensure
+the counterpart of restriction \ref{eq:5}
+because restrictions \ref{eq:2} and \ref{eq:4}
+ensure that
+each adjuster
+must cover each demand point
+for some order,
+therefor
+if and adjuster located at \textit{j}
+does not cover demand point \textit{i}
+at order \textit{k}
+(indicated by
+the maximum covering order in $S_{ij}$)
+there be at least
+one adjuster
+that does not cover
+demand point \textit{i}
+at any order
+resulting in a infeasible soluion.
+
+\todo[inline]{Add Scope}
+\todo[inline]{Computational Results}
