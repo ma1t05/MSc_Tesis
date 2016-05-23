@@ -1,7 +1,5 @@
 \begin{algorithm}
-  \hline \vspace{3pt}
   \caption{Path Relinking Initial Phase}\label{pr_init}
-  \vspace{3pt} \hline
   \begin{algorithmic}[0]
     \Procedure{PathRelinking}{$Instance$}
     \State $EliteSols \gets MultiStart(Instance)$
@@ -11,9 +9,8 @@
     \State $ImprovementMethod(x)$
     \State $EliteSols.Update(x)$
     \EndFor
-    \Until{$PerfectMatchingCost(MiscSols,EliteSols) > \epsilon$}
+    \Until{$PerfectMatchingCost(MiscSols,EliteSols) < \epsilon$}
     \State $SubsetControl(EliteSols)$
     \EndProcedure
-    \hline
   \end{algorithmic}
 \end{algorithm}
