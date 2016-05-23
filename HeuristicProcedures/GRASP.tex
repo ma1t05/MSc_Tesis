@@ -1,11 +1,14 @@
 \section{GRASP}
 %Why did you choose GRASP?
-Because is easy,
+We choose GRASP
+because
 in the proposed problem
 any allocation of sites for adjusters
 is a feasible solution,
 so it was decided to give some intelligence
-to this allocation.
+to this simple allocation
+instead of choose
+random points.
 %What does it consist?
 We start with a partial solution
 (location of a smaller number of adjusters)
@@ -23,6 +26,14 @@ or the sum the distances
 of each allocation 
 from each located adjuster
 with their nearest demand points.
+\begin{equation}
+  \label{eq:grasp1}
+  \sum_{j=1}^{m}{
+    \sum_{i=1}^{n}{
+      t_{ij}y_{ij}^{1}
+    }
+  }
+\end{equation}
 %Second function
 For the second function,
 we try to incorporate cooperatively,
@@ -33,9 +44,37 @@ with their $k$ nearest demand points
 plus \textit{idle} probability
 given that is allocated
 to their $k-1$ nearest demand points.
+\begin{equation}
+  \label{eq:grasp2}
+  \sum_{j=1}^{m}{
+    \sum_{k=1}^{p}{
+      \sum_{i=1}^{n}{
+        h_{ij}^{k}t_{ij}y_{ij}^{k}
+      }
+    }
+  }
+\end{equation}
 %Third function
 The third function,
 consist in use the MST calibration method
-proposed by Jarvis,
+proposed by Jarvis \cite{jarvis1985approximating},
 to obtain more accuracy values
 of the current mean response time.
+
+\subsection{Computational Results}
+Several instances were tested
+with different $\alpha$ values
+to determine the value of $\alpha$ to use.
+The value of $\alpha = 0$ means that
+the procedure becomes completely greedy,
+in contravention
+a value of $\alpha = 1$ means that
+the procedure becomes completely random.
+\missingfigure[figwidth=6cm]{GRASP results of Objective versus $\alpha$}
+
+The test suggest
+that
+with a more random version
+there are more different solutions
+and a wide range of objective values
+achieving better solutions.
