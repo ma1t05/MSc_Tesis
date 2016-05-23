@@ -1,0 +1,19 @@
+\begin{algorithm}
+  \caption{Path Relinking Combination Method}\label{pr_combination}
+  \begin{algorithmic}[0]
+    \Procedure{PahtRelinkingCombination}{$Sol_x,Sol_y$}
+    \State $CombinedSols \gets EmptyList()$
+    \State $match \gets Matching(Sol_x,Sol_y)$
+    \Comment{perfect,workload,random}
+    \State $order \gets ProcessOrder(Sol_x,match,Sol_y)$
+    \Comment{nearest/farthest first,random}
+    \For{$i \gets 1,p$}
+    \State $j \gets order[i]$
+    \If{$Sol_x.ServerLocation(j) != Sol_y.ServerLocation(match[j])$}
+    \State $Sol_x.SetServerLocation(j,Sol_y.ServerLocation(match[j]))$
+    \State $CombinedSols.insert(Sol_x)$
+    \EndIf \EndFor
+%    \State \textbf{return} $CombinedSols$
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}

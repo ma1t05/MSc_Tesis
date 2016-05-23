@@ -13,6 +13,9 @@
     \hypersetup{breaklinks=true,colorlinks=true,
         linkcolor=black,citecolor=black,urlcolor=black}
 \usepackage{datetime} % monthname
+\usepackage{todonotes} % temporaly use for todo notes
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
 %%%%%%%%%%%%%%%%%%%%%
 % Definiendo campos %
@@ -39,6 +42,21 @@
 % El visto bueno siempre va
 \def\vobo{Dr. Simón Martínez Martínez}
 
+\includeonly{
+  Misc/Cover,
+  Misc/Dedicatory,
+  Misc/Acknowledgements,
+  Misc/Abstract,
+  Introduction/Main,
+  RelatedWork/Main,
+  ProblemStatement/Main,
+  Methodology/Main,
+  Models/Main,
+  HeuristicProcedures/Main,
+  Evaluation/Main,
+  Conclusions/Main,
+  Appendices/Jarvis
+}
 %%%%%%%%%%%%%%%%%%%%%%%
 % Inicia el documento %
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -55,6 +73,8 @@
 \tableofcontents
 \listoffigures
 \listoftables
+\listoftodos
+\todo{Remove list of to do's when complete}
 
 \include{Misc/Acknowledgements}
 \include{Misc/Abstract}
@@ -64,11 +84,17 @@
 
 %%% Haz un documento para cada capítulo
 \include{Introduction/Main}
+\include{RelatedWork/Main}
+\include{ProblemStatement/Main}
+\include{Methodology/Main}
 \include{Models/Main}
+\include{HeuristicProcedures/Main}
+\include{Evaluation/Main}
+\include{Conclusions/Main}
 
 \appendix
 %%% Haz un documento para cada apéndice
-\include{Appendices/Apendice}
+\include{Appendices/Jarvis}
 
 \backmatter
 \pagestyle{main}
@@ -78,8 +104,8 @@
 %%% alguno de los archivos de estilo (mighelbib.bst o mighelnat.bst) incluidos
 %%% en el paquete, cuyos diseños armonizan con el diseño de tesis provisto por
 %%% fime.cls. Para muestra, basta un botón:
-\bibliographystyle{mighelbib}
-\bibliography{MiBiblio}
+\bibliographystyle{abbrv}
+\bibliography{references}
 
 \label{lastpage}
 \include{Misc/Autobiography}

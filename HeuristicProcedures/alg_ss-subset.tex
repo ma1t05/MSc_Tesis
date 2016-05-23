@@ -1,0 +1,24 @@
+\begin{algorithm}
+  \caption{Subsets Generator}\label{ss_subsets}
+  \begin{algorithmic}[0]
+    \Procedure{GenerateSubsets}{$RefSet,NowTime$}
+    \State $NewSols \gets SolutionsSince(RefSet,NowTime)$
+    \ForAll{$(Sol_x,Sol_y) \in NewSols$}
+    \If{$Sol_x \in RefSet$ \textbf{and} $Sol_y \in RefSet$}
+    \State $CombinedSols \gets PathRelinkingCombination(Sol_x,Sol_y)$
+    \State $Update(RefSet,CombinedSols)$
+    \EndIf \EndFor
+    \State $UpdateDiversity(RefSet)$
+    \If{$NumberOfOldSols(RefSet,NowTime) > 0$}
+    \State $OldSols \gets SolutionsUntil(RefSet,NowTime)$
+    \ForAll{$Sol_x \in NewSols$}
+    \ForAll{$Sol_y \in OldSols$}
+    \If{$Sol_x \in RefSet$ \textbf{and} $Sol_y \in RefSet$}
+    \State $CombinedSols \gets PathRelinkingCombination(Sol_x,Sol_y)$
+    \State $Update(RefSet,CombinedSols)$
+    \EndIf \EndFor
+    \State $UpdateDiversity(RefSet)$
+    \EndFor \EndIf
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}

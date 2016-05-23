@@ -1,0 +1,16 @@
+\begin{algorithm}
+  \caption{Path Relinking Phase}\label{pr_phase}
+  \begin{algorithmic}[0]
+    \Procedure{SubsetControl}{$RefSet$}
+    \State $NowTime \gets 0$
+    \While{$!StopCondition$}
+    \State $iNew \gets NumberOfNewSols(RefSet,NowTime)$
+    \If{$iNew = 0$}
+    \State $exit$
+    \EndIf
+    \State $GenerateSubsets(RefSet,NowTime)$
+    \State $NowTime \gets NowTime + 1$
+    \EndWhile
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}

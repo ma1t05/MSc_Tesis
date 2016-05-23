@@ -54,8 +54,8 @@ and the addition of the following binary variables
 \end{itemize}
 
 \begin{align}
-  \sum_{r = 1}^{k \mid a_{ik}=j}{
-    z_{a_{ir}}
+  \sum_{r \in S_{ij}\cup\{j\}}{
+    z_{r}
   }
   + (p-\ell) u_{ij}
   & \leq p
@@ -67,8 +67,8 @@ the number of adjusters between $i$ and $j$,
 inclusive,
 is less or equal than $\ell$
 \begin{align}
-  \sum_{r = 1}^{k \mid a_{ik}=j}{
-    z_{a_{ir}}
+  \sum_{r \in S_{ij}\cup\{j\}}{
+    z_{r}
   }
   + M u_{ij}
   & \geq \ell+1
@@ -90,8 +90,8 @@ is greater than $\ell$
 \end{align}
 Assign $z_j$ times $j$ to $i$ if $u_{ij} = 1$
 \begin{align}
-  \sum_{r = 1}^{k \mid a_{i(k+1)}=j}{
-    z_{a_{ir}}
+  \sum_{r \in S_{ij}}{
+    z_{r}
   }
   + (p-(\ell-1)) v_{ij}
   & \leq p
@@ -102,8 +102,8 @@ Checks if
 the number of adjusters between $i$ and $j$,
 is less than $\ell$
 \begin{align}
-  \sum_{r = 1}^{k \mid a_{i(k+1)}=j}{
-    z_{a_{ir}}
+  \sum_{r \in S_{ij}}{
+    z_{r}
   }
   + M v_{ij}
   & \geq \ell
@@ -114,13 +114,13 @@ Checks if
 the number of adjusters between $i$ and $j$,
 is greater or equal than $\ell$
 \begin{align}
-  \sum_{k=1}^{k}{
+  \sum_{k=1}^{\ell}{
     y_{ij}^{k}
   }
   + M (1 - v_{ij} + u_{ij})
   & \geq \ell
-  - \sum_{r = 1}^{k \mid a_{i(k+1)}=j}{
-    z_{a_{ir}}
+  - \sum_{r \in S{ij}}{
+    z_{r}
   } 
   &  i \in V, j 
   & \in W
@@ -128,13 +128,13 @@ is greater or equal than $\ell$
 Assign $j$ to $i$
 the times remaining to complete $\ell$ assignments
 \begin{align}
-  \sum_{k=1}^{k}{
+  \sum_{k=1}^{\ell}{
     y_{ij}^{k}
   }
   - M (1 - v_{ij} + u_{ij})
   & \leq \ell 
-  - \sum_{r = 1}^{k \mid a_{i(k+1)}=j}{
-    z_{a_{ir}}
+  - \sum_{r \in S_{ij}}{
+    z_{r}
   }
   & i \in V,
   & j \in W

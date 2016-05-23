@@ -1,0 +1,42 @@
+\chapter{Methodology}
+In this chapter
+we describe the solution methodology proposed
+to solve the described problem.
+
+A first model was created
+base on proposed by Goldberg \cite{goldberg1990validating}
+for which,
+we made some relaxations
+instead obtaining a linear model.
+
+Proposed a second model
+that performs an additional simplification,
+considering that
+it is unlikely
+assign an adjuster
+to a demand point
+covered previously
+by more adjusters,
+omitting allocation variables
+and adding restrictions
+to guarantee
+the correct order of allocation.
+
+Because the problem stochasticity
+can not evaluate solutions accurately,
+so the Hypercube model is used.
+
+Several functions were evaluated
+for constructive algorithm
+but because presented cooperativeness
+it is difficult
+to approximate the final results
+in a partial solution
+with a greedy function.
+
+To improve these solutions,
+a scatter-search was implemented
+with a dynamic reference set.
+We opted for a dynamic reference set
+due the number of solutions generated
+in each combination is big.
