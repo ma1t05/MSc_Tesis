@@ -1,0 +1,61 @@
+\section{Description of Components}
+The components of Scatter Search template \cite{glover1998template}
+consist of
+specific subroutines of the following types:
+\begin{itemize}
+\item A Diversification Generator
+\item An Improvement Method
+\item A Reference Set Update Method
+\item A Subset Generation Method
+\end{itemize}
+We described below
+each of the components.
+
+\subsection{A Diversification Generator}
+To generate
+a collection of diverse trial solutions,
+using an arbitrary trial solution
+(or seed solution) as an input.
+\input{HeuristicProcedures/alg_ss-init}
+
+\subsection{An Improvement Method}
+To transform
+a trial solution
+into one or more enhanced trial solutions. 
+(
+If no improvement
+of the input trial solution results, 
+the ``enhanced'' solution
+is considered to be
+the same as the input solution.)
+
+\subsection{A Reference Set Update Method}
+To build and maintain a Reference Set
+consisting of the \textit{b} best solutions found
+(where the value of \textit{b}
+is typically small,
+e.g., between 20 and 40),
+organized to provide efficient accessing
+by other parts of the method.
+\input{HeuristicProcedures/alg_ss-phase}
+ 
+\subsection{A Subset Generation Method}
+ to operate
+  on the Reference Set,
+  to produce
+  a subset of its solutions
+  as a basis
+  for creating
+  combined solutions.
+  \input{HeuristicProcedures/alg_ss-subset}
+\item \textbf{A Solution Combination Method:}
+  to transform
+  a given subset of solutions 
+  produced by the Subset Generation Method
+  into
+  one or more combined solution vectors.
+  \input{HeuristicProcedures/alg_ss-combination}
+\end{itemize}
+
+\input{HeuristicProcedures/SS_Template}
+\input{HeuristicProcedures/SS_Results}
