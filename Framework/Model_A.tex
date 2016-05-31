@@ -38,14 +38,16 @@ Sets and indexes:
 \item $k$ possible order;
   $k \in K = \{1,2\ldots,p\}$
 \item $S_{ij} = \{
-  r \in W | \mbox{ site } r \mbox{ is preferred before site } j
+  r \in W | \mbox{ site } r \mbox{ is preferred by proximity before site } j
   \mbox{ for demand point } i
   \}$
 \end{itemize}
 
 Parameters:
 \begin{itemize}
-\item $\rho$ is the utilization of each adjuster
+\item $\rho$ is the utilization of each adjuster,
+  the value is between 0 and 1, 
+  where 0 means that the server is always idle.
 \item $t_{ij}$ is the expected travel time
   between demand point \textit{i}
   and potential site \textit{j}.
@@ -59,7 +61,7 @@ Variables:
 \begin{itemize}
 \item $x_j =
   \begin{cases} 
-    1 & \mbox{if an adjuster is at potential site } j \\
+    1 & \mbox{if an adjuster placed at potential site } j \\
     0 & \mbox{otherwise}
   \end{cases}$
 \item $y_{ij}^{k} =
@@ -104,7 +106,7 @@ Each demand point $i$ is covered by an adjuster on each order $k$
   & i \in V,j \in W, k
   &\in K
 \end{align}
-Assigned only if there is an adjuster located at $j$
+Relation ship betwen variables \textit{x} and \textit{y}
 \begin{align}
   \label{eq:5}
   \sum_{k = 1}^{p}{
@@ -114,7 +116,9 @@ Assigned only if there is an adjuster located at $j$
   & i \in V, j 
   & \in W
 \end{align}
-Only assign in one order for each adjuster located 
+For each located adjuster,
+there can only be
+a maximum of one ordered assignment.
 \begin{align}
   y_{ij}^{k} 
   & \leq \sum_{r\in S_{ij}}{y_{ir}^{k-1}}
@@ -123,7 +127,7 @@ Only assign in one order for each adjuster located
 \end{align}
 Assign \textit{j} to cover \textit{i} in order $k$
 only if
-the assign of order $k-1$
+the assignment of order $k-1$
 was made for some $r \in S_{ij}$
 \begin{align}
   x_{j}
@@ -160,13 +164,13 @@ ensure that
 each adjuster
 must cover each demand point
 for some order,
-therefor
-if and adjuster located at \textit{j}
+therefore
+if an adjuster located at \textit{j}
 does not cover demand point \textit{i}
 at order \textit{k}
 (indicated by
 the maximum covering order in $S_{ij}$)
-there be at least
+there will be at least
 one adjuster
 that does not cover
 demand point \textit{i}
