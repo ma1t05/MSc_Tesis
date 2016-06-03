@@ -6,9 +6,31 @@ to combine solutions.
 We opted for a dynamic reference set
 due the number of solutions generated
 in each combination is big.
-To enchanced the solutions
+To enhanced the solutions
 two improvement methods are included,
 one proposed by Berman \cite{berman1987stochastic},
-and the other a Local Seach.
+and a proposed Local Search.
 
-\input{HeuristicProcedures/alg_ss-template}
+\input{HeuristicProcedures/alg_ss-template_init}
+In the algorithm \ref{alg:SSInitial}
+a Reference Set is created,
+consisting in the bests \textit{b} solutions,
+and the most diverse \text{b} solutions,
+to measure the diversity
+the metric used is
+the minimum perfect matching
+with each solution in the Reference Set.
+
+\input{HeuristicProcedures/alg_ss-template_phase}
+In the algorithm \ref{alg:SSPhase}
+Each pair  of solutions
+is tried to combine
+using the path relinking,
+because the Reference Set is dynamic
+some pairs do not come to be combined,
+since the solutions
+are displaced
+before trying to combine them.
+
+\input{HeuristicProcedures/SS_Components}
+

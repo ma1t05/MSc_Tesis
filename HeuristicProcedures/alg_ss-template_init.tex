@@ -1,0 +1,13 @@
+\begin{algorithm}
+  \caption{Scatter Search} \label{alg:SSInitial}
+  \begin{algorithmic}
+    \Procedure{Initial Phase}{}
+    \State $Sols \gets SeedSolutions()$
+    \Repeat
+    \State $DiversificationGenerator(Sols)$
+    \State $Improvement(Sols)$
+    \State $ReferenceSet(Sols)$
+    \Until {$HasNotChanged(Sols)$ \textbf{or} $MaxIterations$}
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
