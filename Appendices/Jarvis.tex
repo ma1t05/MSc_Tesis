@@ -16,7 +16,7 @@ the servers are fire fighting units or patrol cars
 and the customers are calls for service.
 The simple Erlang loss system
 is inadequate in two aspects for a detailed system analysis.
-\begin{enumerate}
+\begin{itemize}
 \item one often wishes
   to preserve the identity of service units (distinguishable servers).
 \item because
@@ -24,11 +24,11 @@ is inadequate in two aspects for a detailed system analysis.
   the service time depend on both
   the server and the customer
   at least through the travel time between the pair.
-\end{enumerate}
+\end{itemize}
 
 \section{Model assumptions, Notation, and Terminology}
 Consider a system in which:
-\begin{enumerate}
+\begin{itemize}
 \item Exactly one server
   is assigned to each customer
   unless all servers are busy, 
@@ -39,10 +39,10 @@ Consider a system in which:
 \item No preemption of service is allowed
 \item Assignments are made immediately
   upon customer arrival
-\end{enumerate}
+\end{itemize}
 
 and we have the following parameters
-\begin{enumerate}
+\begin{itemize}
 \item \textit{N} distinguishable servers
 \item \textit{C} types of customers
 \item Customers of type \textit{m}
@@ -52,15 +52,15 @@ and we have the following parameters
   for customers of type \textit{m}
 \item $\tau_{im}$ the expected service time
   for server \textit{i} and customer of type \textit{m}
-\end{enumerate}
+\end{itemize}
 
 The performance measures for the system include 
-\begin{enumerate}
+\begin{itemize}
 \item $\rho_i$ the workload of server \texit{i}
 \item $f_{im}$ the probability a random customer of type \textit{m}
   is assigned to server \textit{i}
 \item $P_{N}$ the probability all servers are busy
-\end{enumerate}
+\end{itemize}
 
 \section{Approximation Procedure}
 The procedure described below

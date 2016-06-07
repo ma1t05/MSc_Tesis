@@ -2,8 +2,21 @@
 % O. Berman, R.C. Larson, C. Parkan 
 % 1987
 \chapter{Berman Heuristic}
-This method is presented by Berman et al. \cite{berman1987stochastic}
+This problem is presented by Berman et al. \cite{berman1987stochastic}
+and describes a similar situation to our case,
+with the difference
+that the location of servers
+is in all the network,
+including the edges.
 
+Also present two easily programmable heuristics
+to solve the proposed problem.
+And uses the \textbf{Mean Service Time Calibration Process}
+to evaluate the solutions.
+
+\section{The Stochastic Queue p-Median Problem}
+To define the problem
+the following definitions are made
 \begin{itemize}
 \item $G(N,L)$ the transportation network
 \item $N$ the set of demand centers,
@@ -91,3 +104,47 @@ such that
   \bar{T}_R(\bar{X}^*) \leq \bar{T}_R(\bar{X}) \; \forall \bar{X} \in G
 \end{equation*}
 $\bar{X}^*$ is called \textbf{the stochastic queue p-median}.
+
+\section{Mean Service Time Calibration Process}
+In this emergency system, 
+travel times may represent a considerable part of service times. 
+It may be advisable
+to adjust the service times by means of a calibration process,
+which can be performed using a simple iterative procedure.
+
+The procedure consists
+of verifying if there are significant differences
+among the input mean service times
+and the output mean service times (computed by the hypercube model). 
+In this case, 
+the hypercube
+is solved using the computed mean service times as inputs, 
+until the differences among input and output values
+are sufficiently small.
+
+\begin{center}
+  The mean service time calibration method
+\end{center}
+\vspace{-8pt}
+\hline \\
+\vspace{2pt}
+\textit{Step 0.} The mean service time of unit \textit{i},
+$1/\mu^{i}=1/\mu_{NT}^{i}$, $i = 1,\ldots,p$ 
+($1/\mu_{NT}^{i} = \sum_{j=1}^{n}{h_j\bar{W_{ij}}}$ 
+is the mean of non-travel time component of the service time). \\
+\textit{Step 1.} Run the Hypercube Model (using $\mu^i$) to obtain
+$f_{ij}$, $i = 1,\ldots,p$, $j = 1,\ldots,n$. \\
+\textit{Step 2.} $1/\hat{\mu}^{i} =
+\sum_{k=1}^{n}{
+  h_{k}^{i}(\bar{W_{ik}}+(\beta_{i}/v_{i})d_{ik})
+}$ 
+where 
+$h_{k}^{i} = f_{ik}/\sum_{j=1}^{n}{f_{ij}}$ \\
+\textit{Step 3.} If $|1/\hat{\mu}^{i}-1/\mu^{i}|>\epsilon$
+for at least one $i$, $i=1,\ldots,p$,
+set $1/\mu^{i} \equiv 1/\hat{\mu}^{i}$
+and go back to \textit{Step 1.}
+Otherwise stop. \\
+\hline
+
+
