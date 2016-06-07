@@ -30,7 +30,7 @@
 \def\orientacion{ }
 \def\fecha{\monthname,  \the\year} % Coloca el mes con mayúscula inicial
 
-\def\asesor{Dr. Roger Z. R\'ios}
+\def\asesor{Dr. Roger Z. R\'ios Mercado}
 \def\revisorA{Mar\'ia Ang\'elica Salazar Aguilar}
 \def\revisorB{Mar\'ia Guadalupe Villareal Marroqu\'in}
 % En el caso de que tu tesis sea de doctorado
@@ -49,13 +49,12 @@
   Misc/Abstract,
   Introduction/Main,
   RelatedWork/Main,
-  ProblemStatement/Main,
-  Methodology/Main,
-  Models/Main,
+  Framework/Main,
   HeuristicProcedures/Main,
   Evaluation/Main,
   Conclusions/Main,
-  Appendices/Jarvis
+  Appendices/Jarvis,
+  Appendices/Berman
 }
 %%%%%%%%%%%%%%%%%%%%%%%
 % Inicia el documento %
@@ -85,9 +84,7 @@
 %%% Haz un documento para cada capítulo
 \include{Introduction/Main}
 \include{RelatedWork/Main}
-\include{ProblemStatement/Main}
-\include{Methodology/Main}
-\include{Models/Main}
+\include{Framework/Main}
 \include{HeuristicProcedures/Main}
 \include{Evaluation/Main}
 \include{Conclusions/Main}
@@ -95,6 +92,7 @@
 \appendix
 %%% Haz un documento para cada apéndice
 \include{Appendices/Jarvis}
+\include{Appendices/Berman}
 
 \backmatter
 \pagestyle{main}

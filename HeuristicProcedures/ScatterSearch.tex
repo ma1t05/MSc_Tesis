@@ -1,50 +1,34 @@
-\section{Scatter Search}
-Components of Scatter Search template \cite{glover1998template}
-consist of
-specific subroutines of the following types:
-\begin{itemize}
-\item \textbf{A Diversification Generator:}
-  to generate
-  a collection of diverse trial solutions,
-  using an arbitrary trial solution
-  (or seed solution) as an input.
-  \input{HeuristicProcedures/alg_ss-init}
-\item \textbf{An Improvement Method:}
-  to transform
-  a trial solution
-  into one or more enhanced trial solutions. 
-  (
-  If no improvement
-  of the input trial solution results, 
-  the ``enhanced'' solution
-  is considered to be
-  the same as the input solution.)
-\item \textbf{A Reference Set Update Method:}
-  to build and maintain a Reference Set
-  consisting of the \textit{b} best solutions found
-  (where the value of \textit{b}
-  is typically small,
-  e.g., between 20 and 40),
-  organized to provide efficient accessing
-  by other parts of the method.
-  \input{HeuristicProcedures/alg_ss-phase}
-\item \textbf{A Subset Generation Method:}
-  to operate
-  on the Reference Set,
-  to produce
-  a subset of its solutions
-  as a basis
-  for creating
-  combined solutions.
-  \input{HeuristicProcedures/alg_ss-subset}
-\item \textbf{A Solution Combination Method:}
-  to transform
-  a given subset of solutions 
-  produced by the Subset Generation Method
-  into
-  one or more combined solution vectors.
-  \input{HeuristicProcedures/alg_ss-combination}
-\end{itemize}
+\section{Proposed Metaheuristic}
+A Scatter-Search
+with a dynamic reference set
+was implemented,
+and a path relinking method
+is used as combination method.
+We opted for a dynamic reference set
+due the number of solutions generated
+in each combination is big.
+To enhanced the solutions
+two improvement methods are included,
+one proposed by Berman \cite{berman1987stochastic},
+and a proposed Local Search.
 
-\input{HeuristicProcedures/SS_Template}
-\input{HeuristicProcedures/SS_Results}
+\input{HeuristicProcedures/alg_ss-template_init}
+In the algorithm \ref{alg:SSInitial}
+a Reference Set is created,
+consisting in the bests \textit{b} solutions,
+and the most diverse \text{b} solutions,
+to measure the diversity
+the metric used is
+the minimum perfect matching
+with each solution in the Reference Set.
+
+\input{HeuristicProcedures/alg_ss-template_phase}
+In the algorithm \ref{alg:SSPhase}
+Each pair  of solutions
+is tried to combine
+using the path relinking,
+because the Reference Set is dynamic
+some pairs do not come to be combined,
+since the solutions
+are displaced
+before trying to combine them.

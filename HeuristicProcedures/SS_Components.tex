@@ -1,0 +1,123 @@
+\section{Description of Components}
+The components of Scatter Search template \cite{glover1998template}
+consist of
+specific subroutines of the following types:
+\begin{itemize}
+\item A Diversification Generator
+\item An Improvement Method
+\item A Reference Set Update Method
+\item A Subset Generation Method
+\end{itemize}
+We described below
+each of the components.
+
+\subsection{A Diversification Generator}
+To generate
+a collection of diverse trial solutions,
+using an arbitrary trial solution
+(or seed solution) as an input.
+\input{HeuristicProcedures/alg_ss-init}
+In our case,
+the generator was a multi-start
+consisting of a GRASP
+\input{HeuristicProcedures/GRASP}
+
+\subsection{An Improvement Method}
+To transform
+a trial solution
+into one or more enhanced trial solutions. 
+(
+If no improvement
+of the input trial solution results, 
+the ``enhanced'' solution
+is considered to be
+the same as the input solution.)
+
+We have two improvement methods,
+the first an adaptation
+of the proposed method by Berman
+\todo[inline]{add cite to Berman}
+and the second,
+a Local Search
+described in the next section.
+
+\subsection{A Reference Set Update Method}
+To build and maintain a Reference Set
+consisting of the \textit{b} best solutions found
+(where the value of \textit{b}
+is typically small,
+e.g., between 20 and 40),
+organized to provide efficient accessing
+by other parts of the method.
+
+We choose
+a two tier Reference Set
+to maintain a part of diverse solutions,
+this because the combination method
+generates similar solutions to input.
+And we opt for be dynamic
+since the number
+of generated solutions
+is big (proportional to \textit{p}).
+
+\subsection{A Subset Generation Method}
+To operate on the Reference Set,
+to produce a subset of its solutions
+as a basis for creating combined solutions.
+\input{HeuristicProcedures/alg_ss-subset}
+We only look for subsets of size two
+i.e. pairs of solutions,
+because our Reference Set is dynamic,
+to identify the new solutions,
+we label solutions as new and old
+at the start of each iteration.
+We combine first the new solutions
+between them,
+next the new solutions with the old,
+the new solutions that enters in the Reference Set
+as a combined solutions,
+is not part of the subsets
+until the next iteration.
+Each solution generated
+and did not enter in the Reference Set,
+displaced by a better solution,
+or actually
+a member of the diverse part of the Reference Set
+is evaluated to be in the Reference Set
+as a diverse solution.
+
+\subsection{A Solution Combination Method}
+To transform a given subset of solutions 
+produced by the Subset Generation Method
+into
+one or more combined solution vectors.
+\input{HeuristicProcedures/alg_ss-combination}
+We choose a path relinking as a combination method
+consisting of
+determine a match between servers,
+this match can be
+\begin{itemize}
+\item Perfect Matching:
+  minimizing the distance between paired servers
+\item Workload Matching:
+  sorting the servers of both solutions
+  according to the workloads,
+  and match them according these sorted lists.
+\item Random Matching
+\end{itemize}
+once we have the matching
+we proceed from one solution
+to interchange each server
+(one by step)
+until end in the other solution,
+in each interchange
+we have a new solution.
+To make the interchanges
+we have three options
+\begin{itemize}
+\item Nearest First
+\item Farthest First
+\item Random
+\end{itemize}
+\input{HeuristicProcedures/SS_Template}
+\input{HeuristicProcedures/SS_Results}

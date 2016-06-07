@@ -53,20 +53,47 @@ and the addition of the following binary variables
   \end{cases}$
 \end{itemize}
 
+Model
+\begin{equation}
+  \min \, \sum_{j=1}^{m}{
+    \sum_{k=1}^{\ell}{
+      \sum_{i=1}^{n}{
+        h_{ij}^{k}t_{ij}y_{ij}^{k}
+      }
+    }
+  }
+\end{equation}
+Minimize the average expected response time
 \begin{align}
+  \sum_{j \in W}{z_j}
+  & = p
+\end{align}
+Only locate $p$ adjusters
+\begin{align}
+  \sum_{j \in W}{y_{ij}^{k}}
+  & = 1
+  & i \in V, k
+  &\in \{1,\ldots,\ell\}
+\end{align}
+Each demand point $i$ is covered by an adjuster on each order until $\ell$
+\begin{align}
+  y_{ij}^{k}
+  & \leq z_j
+  & i \in V,j \in W, k
+  &\in \{1,\ldots,\ell\}
+\end{align}
+Relation ship between variables \textit{z} and \textit{y}
+\begin{align}
+  \label{eq:relzu1}
   \sum_{r \in S_{ij}\cup\{j\}}{
     z_{r}
   }
   + (p-\ell) u_{ij}
   & \leq p
   & i \in V,
-  & j \in W
-\end{align}
-Checks if
-the number of adjusters between $i$ and $j$,
-inclusive,
-is less or equal than $\ell$
-\begin{align}
+  & j \in W 
+  \\
+  \label{eq:relzu2}
   \sum_{r \in S_{ij}\cup\{j\}}{
     z_{r}
   }
@@ -75,10 +102,20 @@ is less or equal than $\ell$
   & i \in V,
   & j \in W
 \end{align}
-Checks if
-the number of adjusters between $i$ and $j$,
-inclusive,
-is greater than $\ell$
+These two constraints
+set the relationship
+between the $z$ and $u$ variables.
+If $u = 1$
+the equation (\ref{eq:relzu2}) becomes redundant,
+and equation (\ref{eq:relzu1}) guarantees
+that the number of adjusters between $i$ and $j$
+is less or equal than $\ell$,
+otherwise
+if $u = 0$
+the equation (\ref{eq:relzu1}) becomes redundant,
+and equation (\ref{eq:relzu2}) guarantees
+that the number of adjusters between $i$ and $j$
+is more than $\ell$.
 \begin{align}
   \sum_{k = 1}^{\ell}{
     y_{ij}^{k}
@@ -88,7 +125,9 @@ is greater than $\ell$
   & i \in V,
   & j \in W
 \end{align}
-Assign $z_j$ times $j$ to $i$ if $u_{ij} = 1$
+Assign $z_j$ times $j$ to $i$ if $u_{ij}=1$,
+otherwise
+becomes redunant.
 \begin{align}
   \sum_{r \in S_{ij}}{
     z_{r}
@@ -97,11 +136,7 @@ Assign $z_j$ times $j$ to $i$ if $u_{ij} = 1$
   & \leq p
   & i \in V,
   & j \in W
-\end{align}
-Checks if
-the number of adjusters between $i$ and $j$,
-is less than $\ell$
-\begin{align}
+  \\
   \sum_{r \in S_{ij}}{
     z_{r}
   }
@@ -110,9 +145,10 @@ is less than $\ell$
   & i \in V,
   & j \in W
 \end{align}
-Checks if
-the number of adjusters between $i$ and $j$,
-is greater or equal than $\ell$
+Analogus to equations (\ref{eq:relzu1},\ref{eq:relzu2})
+these two constraints
+set the relationship
+between the $z$ and $v$ variables.
 \begin{align}
   \sum_{k=1}^{\ell}{
     y_{ij}^{k}
@@ -124,10 +160,7 @@ is greater or equal than $\ell$
   } 
   &  i \in V, j 
   & \in W
-\end{align}
-Assign $j$ to $i$
-the times remaining to complete $\ell$ assignments
-\begin{align}
+  \\
   \sum_{k=1}^{\ell}{
     y_{ij}^{k}
   }

@@ -14,7 +14,7 @@ The following assumptions are considered in the model:
 \begin{itemize}
 \item The probability that an adjuster is busy
   is $\rho$ and is unaffected by the state of the system
-\item There is a strict ordering of the bases preferred for each zone
+\item There is a strict ordering of the basis preferred for each zone
   that does not depend
   on the current state of the system
 \item All calls are answered
@@ -38,14 +38,24 @@ Sets and indexes:
 \item $k$ possible order;
   $k \in K = \{1,2\ldots,p\}$
 \item $S_{ij} = \{
-  r \in W | \mbox{ site } r \mbox{ is preferred before site } j
+  r \in W | \mbox{ site } r \mbox{ is preferred by proximity before site } j
   \mbox{ for demand point } i
   \}$
 \end{itemize}
 
 Parameters:
 \begin{itemize}
-\item $\rho$ is the utilization of each adjuster
+\item $\lambda_i$ arrival rate of calls
+  for demand point \textit{j}
+\item $\rho$ is the utilization of each adjuster,
+  the value is between 0 and 1, 
+  where 0 means that the server is always idle.
+  To obtain an approximate value for $\rho$
+  we use the formula proposed by Daskin
+  \begin{*equation}
+    \rho = \frac{\sum_{i=0}^{n}{\lambda_i}}{m * p}
+  \end{*equation}
+  \todo[inline]{Add cite for equation to obtain $\rho$}
 \item $t_{ij}$ is the expected travel time
   between demand point \textit{i}
   and potential site \textit{j}.
@@ -53,13 +63,18 @@ Parameters:
   that $j$ serves point $i$
   given that
   is the $k$-th preferred.
+  It is calculated
+  using the following formula:
+  \begin{*equation}
+    h_{ij}^{k} = (1-\rho)\rho^{k-1}
+  \end{*equation}
 \end{itemize}
 
 Variables:
 \begin{itemize}
 \item $x_j =
   \begin{cases} 
-    1 & \mbox{if an adjuster is at potential site } j \\
+    1 & \mbox{if an adjuster placed at potential site } j \\
     0 & \mbox{otherwise}
   \end{cases}$
 \item $y_{ij}^{k} =
@@ -104,7 +119,7 @@ Each demand point $i$ is covered by an adjuster on each order $k$
   & i \in V,j \in W, k
   &\in K
 \end{align}
-Assigned only if there is an adjuster located at $j$
+Relation ship betwen variables \textit{x} and \textit{y}
 \begin{align}
   \label{eq:5}
   \sum_{k = 1}^{p}{
@@ -114,7 +129,9 @@ Assigned only if there is an adjuster located at $j$
   & i \in V, j 
   & \in W
 \end{align}
-Only assign in one order for each adjuster located 
+For each located adjuster,
+there can only be
+a maximum of one ordered assignment.
 \begin{align}
   y_{ij}^{k} 
   & \leq \sum_{r\in S_{ij}}{y_{ir}^{k-1}}
@@ -123,7 +140,7 @@ Only assign in one order for each adjuster located
 \end{align}
 Assign \textit{j} to cover \textit{i} in order $k$
 only if
-the assign of order $k-1$
+the assignment of order $k-1$
 was made for some $r \in S_{ij}$
 \begin{align}
   x_{j}
@@ -137,18 +154,6 @@ was made for some $r \in S_{ij}$
   &\in K \nonumber
 \end{align}
 
-%This model was tested 
-%with a benchmark instance of 30 points, 
-%which sets $V$ and $W$ are the same.
-%For values of $p = 1,\ldots,7$
-%the optimal solution was found in less than one minute.
-%
-%For other benchmark instances
-%was impossible to find the solution
-%because they have more than 300 points,
-%and the proposed model grows to over one million variables.
-%  For some large instances ($n = 50$ , $m = 30$)%
-
 % Model implications
 Observe that
 we do not need
@@ -160,13 +165,13 @@ ensure that
 each adjuster
 must cover each demand point
 for some order,
-therefor
-if and adjuster located at \textit{j}
+therefore
+if an adjuster located at \textit{j}
 does not cover demand point \textit{i}
 at order \textit{k}
 (indicated by
 the maximum covering order in $S_{ij}$)
-there be at least
+there will be at least
 one adjuster
 that does not cover
 demand point \textit{i}
@@ -174,4 +179,3 @@ at any order
 resulting in a infeasible soluion.
 
 \todo[inline]{Add Scope}
-\todo[inline]{Computational Results}
