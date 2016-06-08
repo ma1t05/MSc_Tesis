@@ -1,0 +1,68 @@
+\section{Scatter Search}
+For this case
+we are interested in knowing
+as the heuristic contributes to improvement,
+at par,
+we want to know
+that much time is spent
+calling the Hypercube.
+
+\begin{table}[h]
+  \begin{tabular}{|l|l|r|r|r|r|r|r|}
+    \hline
+    \multicolumn{2}{|c|}{M}
+    & \multicolumn{3}{|c|}{50}
+    & \multicolumn{3}{|c|}{100} \\ \hline 
+    N & p & Improvement & Time (sec) & MST(sec)
+    & Improvement & Time (sec) & MST(sec) \\ \hline
+    \multirow{4}{*}{30}
+    & 7 & 6.97 & 1.64 & 1.55
+    & 6.70 & 4.33 & 4.10 \\
+    & 10 & 9.62 & 5.20 & 4.57
+    & 5.74 & 9.97 & 9.65 \\
+    & 15 & 6.95 & 8.55 & 6.49
+    & 3.38 & 14.90 & 13.46 \\
+    & 20 & 3.67 & 13.79 & 8.80
+    & 2.80 & 28.30 & 24.01 \\ \hline
+    \multirow{4}{*}{50}
+    & 7 & 9.76 & 2.47 & 2.41
+    & 7.68 & 4.23 & 4.46 \\
+    & 10 & 12.20 & 7.09 & 6.15
+    & 8.09 & 11.01 & 10.59 \\
+    & 15 & 9.75 & 11.35 & 8.51
+    & 9.55 & 25.72 & 22.36 \\
+    & 20 & 10.63 & 30.22 & 19.38
+    & 9.51 & 61.22 & 49.41 \\ \hline
+    \multirow{4}{*}{75}
+    & 7 & 11.64 & 2.43 & 2.37
+    & 7.70 & 4.55 & 4.76 \\
+    & 10 & 14.50 & 6.16 & 5.35
+    & 11.46 & 10.17 & 9.82 \\
+    & 15 & 18.26 & 19.44 & 14.08
+    & 11.95 & 36.70 & 31.19 \\
+    & 20 & 13.59 & 44.19 & 28.05
+    & & & \\ \hline
+    & & 10.63 & 12.71 & 8.98
+    & 7.69 & 19.17 & 16.73 \\
+    \hline
+  \end{tabular}
+  \caption[Scatter Search]{Scatter Search improvements and time}
+  \label{tab:SS}
+\end{table}
+The improvement
+is obtained
+between the value of the best solution
+generated on the multi-start,
+and the best solution after the SS-PR
+without improvement methods.
+
+\missingfigure[figwidth=6cm]{Scatter Search results}
+To evaluate this heuristic
+several instances was tested
+and
+a design of experiment was made
+to determine
+the match method
+and the processing order method
+that produce better results.
+

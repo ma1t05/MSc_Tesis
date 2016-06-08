@@ -1,0 +1,31 @@
+\begin{algorithm}
+  \caption{Scatter Search} \label{alg:SSInitial}
+  \begin{algorithmic}
+    \Procedure{Initial Phase}{}
+    \State $Sols \gets SeedSolutions()$
+    \Repeat
+    \State $DiversificationGenerator(Sols)$
+    \State $Improvement(Sols)$
+    \State $ReferenceSet(Sols)$
+    \Until {$HasNotChanged(Sols)$ \textbf{or} $MaxIterations$}
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Scatter Search} \label{alg:SSPhase}
+  \begin{algorithmic}
+    \Procedure{Scatter Search Phase}{$RefSet$}
+    \Repeat
+    \State $G_X \gets SubsetGeneration(RefSet)$
+    \ForAll {$X \in G_X$}
+    \State $C_X = SolutionCombination(X)$
+    \ForAll{$Sol \in C_X$}
+    \State $Improvement(Sol)$
+    \State $Update(RefSet,Sol)$
+    \EndFor
+    \EndFor
+    \Until {$HasNotChanged(RefSet)$  \textbf{or} $MaxIterations$}
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}

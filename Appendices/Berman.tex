@@ -1,0 +1,150 @@
+% The Stochastic Queue p-Median Problem
+% O. Berman, R.C. Larson, C. Parkan 
+% 1987
+\chapter{Berman Heuristic}
+This problem is presented by Berman et al. \cite{berman1987stochastic}
+and describes a similar situation to our case,
+with the difference
+that the location of servers
+is in all the network,
+including the edges.
+
+Also present two easily programmable heuristics
+to solve the proposed problem.
+And uses the \textbf{Mean Service Time Calibration Process}
+to evaluate the solutions.
+
+\section{The Stochastic Queue p-Median Problem}
+To define the problem
+the following definitions are made
+\begin{itemize}
+\item $G(N,L)$ the transportation network
+\item $N$ the set of demand centers,
+  with $|N| = n$
+\item $L$ the set of all transportation arteries,
+  the links
+\item $h_j$ the fraction of service calls
+  associated with each node $j$
+\item $d(X,Y)$ is the shortest path between any two points $X,Y \in G$
+\item $p$ number of response units
+\item $\bar{X}$ the home locations of the service units while available
+\item $\lambda$ mean rate per unit of time
+  within service calls are generated in Poisson manner
+\end{itemize}
+
+Given the arrival of a call for service,
+exactly one of the servers is dispatched to it
+assuming that at least one server is available.
+
+The service time for any service unit \textit{i}
+is the sum of two components:
+\begin{itemize}
+\item The non-travel time component,
+  which is the sum of
+  on-scene and off-scene service time.
+\item Travel time component,
+  which is the sum of travel time
+  to the location of the call
+  and travel time back to the home location.
+\end{itemize}
+
+The mean service time 
+for a service unit located at $\bar{X}^i$ 
+is denoted $S(\bar{X}^i)$,
+\begin{equation}
+  S(\bar{X}^i) =
+  \sum_{j = 1}^{n} {
+    h_j^i\left(
+    \bar{W}_{ij}
+    +\frac{{\beta}_i}{v_i}d(\bar{X}^i,j)
+    \right)
+  } \; i=1,\ldots,p
+\end{equation}
+\begin{itemize}
+\item $\bar{W}_{ij}$ is the mean
+  of the \textbf{non-travel time} component $W_{ij}$
+\item $v_i$ is the \textbf{travel speed} of unit \textit{i}
+  to the scene of the call
+  which is assumed constant
+\item $\beta_i$ is a constant
+  that allows different travel speeds
+  to and from the scene of the call
+\item $h_j^i$ is the probability that server \textit{i} 
+  is dispatched to node \textit{j}
+  given that server \textit{i}
+  is dispatched to a call for service.
+\end{itemize}
+
+Whenever a call for service arrives 
+while at least one of the servers
+is free at its home location,
+the closest available server to the call
+will be dispatched.
+Calls that find
+all servers busy
+enter a queue.
+The queue discipline is assumed to be
+First-Come-First-Served.
+The expected response time
+to a random call
+denoted by $\bar{T}_R(X)$
+is the sum of two components
+\begin{equation*}
+  \bar{T}_R(\bar{X}) = \bar{W}_q(\bar{X})+\bar{t}(\bar{X})
+\end{equation*}
+\begin{itemize}
+\item $\bar{W}_q(\bar{X})$ is the expected \textbf{waiting time} in the queue
+\item $\bar{t}(\bar{X})$ is the expected \textbf{travel time} to the call.
+\end{itemize}
+The objective is to find
+a set of \textit{p} locations $\bar{X}^*$
+on the network
+such that
+\begin{equation*}
+  \bar{T}_R(\bar{X}^*) \leq \bar{T}_R(\bar{X}) \; \forall \bar{X} \in G
+\end{equation*}
+$\bar{X}^*$ is called \textbf{the stochastic queue p-median}.
+
+\section{Mean Service Time Calibration Process}
+In this emergency system, 
+travel times may represent a considerable part of service times. 
+It may be advisable
+to adjust the service times by means of a calibration process,
+which can be performed using a simple iterative procedure.
+
+The procedure consists
+of verifying if there are significant differences
+among the input mean service times
+and the output mean service times (computed by the hypercube model). 
+In this case, 
+the hypercube
+is solved using the computed mean service times as inputs, 
+until the differences among input and output values
+are sufficiently small.
+
+\begin{center}
+  The mean service time calibration method
+\end{center}
+\vspace{-8pt}
+\hline \\
+\vspace{2pt}
+\textit{Step 0.} The mean service time of unit \textit{i},
+$1/\mu^{i}=1/\mu_{NT}^{i}$, $i = 1,\ldots,p$ 
+($1/\mu_{NT}^{i} = \sum_{j=1}^{n}{h_j\bar{W_{ij}}}$ 
+is the mean of non-travel time component of the service time). \\
+\textit{Step 1.} Run the Hypercube Model (using $\mu^i$) to obtain
+$f_{ij}$, $i = 1,\ldots,p$, $j = 1,\ldots,n$. \\
+\textit{Step 2.} $1/\hat{\mu}^{i} =
+\sum_{k=1}^{n}{
+  h_{k}^{i}(\bar{W_{ik}}+(\beta_{i}/v_{i})d_{ik})
+}$ 
+where 
+$h_{k}^{i} = f_{ik}/\sum_{j=1}^{n}{f_{ij}}$ \\
+\textit{Step 3.} If $|1/\hat{\mu}^{i}-1/\mu^{i}|>\epsilon$
+for at least one $i$, $i=1,\ldots,p$,
+set $1/\mu^{i} \equiv 1/\hat{\mu}^{i}$
+and go back to \textit{Step 1.}
+Otherwise stop. \\
+\hline
+
+
