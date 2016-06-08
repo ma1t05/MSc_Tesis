@@ -60,6 +60,26 @@ since the number
 of generated solutions
 is big (proportional to \textit{p}).
 
+Whenever the Reference Set is update
+it is try to incorporate
+the solutions generated in a combination,
+because the Reference Set is divided
+in two parts,
+first try to accommodate each solution
+by quality criteria.
+If a solutions enters the Reference Set,
+degrades solutions lower quality to it,
+removing the worst solution of the Reference Set.
+
+After trying to accommodate solutions
+for quality criterion,
+solutions that do not enter the Reference Set
+and those that are removed,
+they are try to enter with diversity criterion.
+reassessing the diverse solutions,
+since they evaluation depends
+on the quality members.
+
 \subsection{A Subset Generation Method}
 To operate on the Reference Set,
 to produce a subset of its solutions
@@ -91,7 +111,7 @@ To transform a given subset of solutions
 produced by the Subset Generation Method
 into
 one or more combined solution vectors.
-\input{HeuristicProcedures/alg_ss-combination}
+
 We choose a path relinking as a combination method
 consisting of
 determine a match between servers,
@@ -119,3 +139,4 @@ we have three options
 \item Farthest First
 \item Random
 \end{itemize}
+\input{HeuristicProcedures/alg_ss-combination}
