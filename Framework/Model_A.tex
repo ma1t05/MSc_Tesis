@@ -13,15 +13,15 @@ for all possible orders.
 The following assumptions are considered in the model:
 \begin{itemize}
 \item The probability that an adjuster is busy
-  is $\rho$ and is unaffected by the state of the system
+  is $\rho$ and is unaffected by the state of the system.
 \item There is a strict ordering of the basis preferred for each zone
   that does not depend
-  on the current state of the system
+  on the current state of the system.
 \item All calls are answered
   by an adjuster originating from its base,
-  not en route back to the base
+  not in route back to the base.
 \item The arrival of calls to the system
-  follows a stationary distribution
+  follows a stationary distribution.
 \item The model is presented
   using a 0-queue assumption.
 \end{itemize}
@@ -35,7 +35,7 @@ Sets and indexes:
   $i \in V = \{1,2,\ldots,n\}$ 
 \item \textit{j} index for potential site for adjusters/facilities
   $j \in W = \{1,2,\ldots,m\}$
-\item $k$ possible order;
+\item $k$ index for possible order;
   $k \in K = \{1,2\ldots,p\}$
 \item $S_{ij} = \{
   r \in W | \mbox{ site } r \mbox{ is preferred by proximity before site } j
@@ -46,27 +46,27 @@ Sets and indexes:
 Parameters:
 \begin{itemize}
 \item $\lambda_i$ arrival rate of calls
-  for demand point \textit{j}
+  for demand point \textit{i}
 \item $\rho$ is the utilization of each adjuster,
   the value is between 0 and 1, 
   where 0 means that the server is always idle.
   To obtain an approximate value for $\rho$
-  we use the formula proposed by Daskin
+  we use the formula proposed by Berman et al.
+  \cite{berman1982median}
   \begin{*equation}
-    \rho = \frac{\sum_{i=0}^{n}{\lambda_i}}{m * p}
+    \rho = \frac{\sum_{i=0}^{n}{\lambda_i}}{m p}
   \end{*equation}
-  \todo[inline]{Add cite for equation to obtain $\rho$}
 \item $t_{ij}$ is the expected travel time
   between demand point \textit{i}
   and potential site \textit{j}.
 \item $h_{ij}^{k}$ is the probability
   that $j$ serves point $i$
   given that
-  is the $k$-th preferred.
+  it is the $k$-th preferred.
   It is calculated
   using the following formula:
   \begin{*equation}
-    h_{ij}^{k} = (1-\rho)\rho^{k-1}
+    {h}_{ij}^{k} = (1-\rho)\rho^{k-1}
   \end{*equation}
 \end{itemize}
 
@@ -74,7 +74,7 @@ Variables:
 \begin{itemize}
 \item $x_j =
   \begin{cases} 
-    1 & \mbox{if an adjuster placed at potential site } j \\
+    1 & \mbox{if an adjuster is placed at potential site } j \\
     0 & \mbox{otherwise}
   \end{cases}$
 \item $y_{ij}^{k} =
@@ -98,6 +98,7 @@ Model
   \end{equation}
 }
 Minimize the average expected response time
+subject to
 \begin{align}
   \label{eq:2}
   \sum_{j \in W}{x_j}
@@ -119,7 +120,7 @@ Each demand point $i$ is covered by an adjuster on each order $k$
   & i \in V,j \in W, k
   &\in K
 \end{align}
-Relation ship betwen variables \textit{x} and \textit{y}
+Relationship between variables \textit{x} and \textit{y}
 \begin{align}
   \label{eq:5}
   \sum_{k = 1}^{p}{
@@ -136,7 +137,7 @@ a maximum of one ordered assignment.
   y_{ij}^{k} 
   & \leq \sum_{r\in S_{ij}}{y_{ir}^{k-1}}
   & i \in V,j \in W, k
-  & \in K/\{1\}
+  & \in K\setminus\{1\}
 \end{align}
 Assign \textit{j} to cover \textit{i} in order $k$
 only if
@@ -157,10 +158,10 @@ was made for some $r \in S_{ij}$
 % Model implications
 Observe that
 we do not need
-to add a restriction
+to add a constraint
 to ensure
-the counterpart of restriction \ref{eq:5}
-because restrictions \ref{eq:2} and \ref{eq:4}
+the counterpart of (\ref{eq:5})
+because (\ref{eq:2}) and (\ref{eq:4})
 ensure that
 each adjuster
 must cover each demand point
@@ -176,4 +177,4 @@ one adjuster
 that does not cover
 demand point \textit{i}
 at any order
-resulting in a infeasible soluion.
+resulting in an infeasible solution.

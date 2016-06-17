@@ -6,7 +6,7 @@
 
 This model
 was developed with the idea
-that is unlikely that the farthest adjusters
+that it is unlikely that the farthest adjusters
 serve demand points
 on cases where the system does not become congested.
 In these cases
@@ -31,7 +31,7 @@ Variables:
 \end{itemize}
 
 The objective,
-and the constraints \ref{eq:2}-\ref{eq:5} 
+and constraints (\ref{eq:2})-(\ref{eq:5})
 are practically the same as in model A,
 with the difference that
 binary variables $x_j$ from Model A
@@ -82,7 +82,7 @@ Each demand point $i$ is covered by an adjuster on each order until $\ell$
   & i \in V,j \in W, k
   &\in \{1,\ldots,\ell\}
 \end{align}
-Relation ship between variables \textit{z} and \textit{y}
+Relationship between variables \textit{z} and \textit{y}
 \begin{align}
   \label{eq:relzu1}
   \sum_{r \in S_{ij}\cup\{j\}}{
@@ -106,13 +106,13 @@ These two constraints
 set the relationship
 between the $z$ and $u$ variables.
 If $u = 1$
-the equation (\ref{eq:relzu2}) becomes redundant,
-and equation (\ref{eq:relzu1}) guarantees
+(\ref{eq:relzu2}) become redundant,
+and contraint (\ref{eq:relzu1}) guarantees
 that the number of adjusters between $i$ and $j$
 is less or equal than $\ell$,
 otherwise
 if $u = 0$
-the equation (\ref{eq:relzu1}) becomes redundant,
+the equation (\ref{eq:relzu1}) become redundant,
 and equation (\ref{eq:relzu2}) guarantees
 that the number of adjusters between $i$ and $j$
 is more than $\ell$.
@@ -127,7 +127,7 @@ is more than $\ell$.
 \end{align}
 Assign $z_j$ times $j$ to $i$ if $u_{ij}=1$,
 otherwise
-becomes redunant.
+if becomes redunant.
 \begin{align}
   \sum_{r \in S_{ij}}{
     z_{r}
@@ -145,8 +145,8 @@ becomes redunant.
   & i \in V,
   & j \in W
 \end{align}
-Analogus to equations (\ref{eq:relzu1},\ref{eq:relzu2})
-these two constraints
+Analogus to constraints (\ref{eq:relzu1})-(\ref{eq:relzu2})
+these constraints
 set the relationship
 between the $z$ and $v$ variables.
 \begin{align}
@@ -183,7 +183,7 @@ the times remaining to complete $\ell$ assignments
 \end{align}
 Assign $j$ to $i$
 only if
-is in the first $\ell$ adjusters near $i$
+it is in the first $\ell$ adjusters near $i$
 \begin{align}
   z_j
   & \in \{0,1,\ldots,p\}
