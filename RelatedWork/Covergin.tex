@@ -26,11 +26,89 @@ proposed to overcome some of the shortcomings of the LSCM.
 In the MCLP the objective is to maximize population coverage
 subject to limited ambulance availability.
 % eos
+
+A limitation of the deterministic models
+is that
+they assume
+that servers are available when requested,
+which is not always true in practical situations.
+Congestion in emergency services,
+which may cause
+the unavailability of servers located
+within the critical distance
+when a call is placed,
+leads to
+the development of
+a second generation of location covering models
+focused on additional coverage.
+
+The definition of
+probabilistic location models for planning these systems
+is a natural extension
+of their deterministic equivalents,
+the location models with covering constraints.
+The notion of coverage
+implies
+the definition of a service distance (time),
+which is the critical distance (time)
+beyond which a demand area is considered not covered.
+A demand area is
+therefore
+considered covered
+if
+it is within a predefined critical distance (say D)
+from at least one of the existing facilities.
+
+The Maximum Expected Covering Location Problem (MEXCLP)
+defined by Daskin \cite{daskin1983maximum}
+whose objective is to
+maximize the expected coverage
+of all demand areas under consideration,
+assume that servers operate independently
+and that all servers have the same busy probability (workload) $\rho$,
+allowings that more than one server be situated in any given location.
 % source: golberg1990validating
 Daskin et al. \cite{daskin1981hierarchical},
-and all other set covering approaches
-\cite{revelle1989maximum,gendreau1997solving,saydam2003accurate},
-assume that
-travel times are deterministic
+assume
+that travel times are deterministic
 and coverage is an ``all-or-nothing'' property.
 % eos
+
+ReVelle et al. \cite{revelle1989maximum}
+proposes two variations for the Maximum Availability Location Problem (MALP)
+locate \textit{p} servers
+in suchs a way
+as to minimize the population
+which will find a server available within $\alpha$ reliability
+the firstone assume,
+like Daskin,
+that each server has the same busy probability,
+and predetermine the number of times a demand point needs to be covered.
+The other,
+allow busy fractions
+to be different in the various sections of a region under consideration
+(but not for each server to be located)
+
+These models
+emphasize the importance of additional coverage
+for the demand areas,
+given the possibility that
+in congested systems
+the first server,
+possibly
+the only server in a particular coverage area,
+might not be available when requested.
+Gendreau et al. \cite{gendreau1997solving}
+proposes a model with double coverage,
+uses two radious $r_1$, and $r_2$ $(r_2 > r_1)$,
+to locate $p$ ambulances,
+such that
+all the demand must be covered by an ambulance
+located within $r_2$ time units,
+and,
+a proportion $\alpha$ of the demand
+must also be within $r_1$ units of an ambulance,
+which may or may not be the same ambulance that
+covers this customer within $r_2$ time units.
+Note that a feasible solution may not exist
+if the parameters $r_1$, $r_2$ and $\alpha$ are too restrictive.
