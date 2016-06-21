@@ -1,0 +1,34 @@
+\section{Comparison}
+As you can see,
+the model A
+has a considerable amount of binary variables,
+it is why the model B was formulated
+but due the lack of allocation variables
+we need to add other variables and constraints
+to ensure a similar behavior.
+
+We can determine the size of the models
+in function of \textit{N}, \textit{M}, \textit{p} and $\ell$.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{c|c|c|}
+    \cline{2-3}
+    & Model A & Model B \\ \hline
+    \multicolumn{1}{|l|}{variables} &
+    $m(np+1)$ &
+    $m(n(\ell+2)+1)$ \\ \hline
+    \multicolumn{1}{|l|}{constraints} &
+    $n(2mp+p)+1$ &
+    $n((l+8)m+1)+1$ \\ \hline
+  \end{tabular}
+  \caption{Models size}
+\end{table}
+
+And we can notice
+that since $\ell < p - 2$
+have fewer variables
+in Model B,
+and when $\ell < 2p - 8$
+we obtain less constrains
+than in Model A.
