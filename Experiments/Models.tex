@@ -24,8 +24,7 @@ For $n = 100$ we created 8 instances with $m = 20,30,\ldots,100$,
 and they were tested with different values of $p$ from 5 to $\frac{m}{2}$,
 shown in the following table \ref{tab:tests}.
 \begin{table}
-  \centerign
-  \label{tab:tests}
+  \centering
   \begin{tabular}{|c|c|c|}\hline
     n & m & p \\ \hline
     100 & 20 & 5-10 \\
@@ -39,6 +38,8 @@ shown in the following table \ref{tab:tests}.
     100 & 100 & 5-50 \\
     \hline
   \end{tabular}
+  \caption{Instances to test models}
+  \label{tab:tests}
 \end{table}
 
 Model A was solved to optimality only when $p < 25$,
@@ -55,12 +56,31 @@ and $\ell$ from $1,\ldots,p$.
 For almost all cases,
 model B was solved to optimality
 in less than a minute for each case.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[scale=0.6]{graph_01}
+  \caption{Solution times versus $\ell$ between $p$}
+\end{figure}
+
 When the value of $\ell$ 
 is close to $p$
 model resolution takes longer
 and in some cases
 optimal is not achieved.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[scale=0.35]{graph_02}
+  \includegraphics[scale=0.35]{graph_03}
+  \caption{Solution times versus $\ell$ between $p$}
+\end{figure}
+
 However,
 it can be seen
 that for different values of $\ell$
 the solutions obtained are the same.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[scale=0.35]{graph_04}
+  \includegraphics[scale=0.35]{graph_05}
+\end{figure}
