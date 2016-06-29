@@ -22,9 +22,10 @@ Different random instances were generated
 to validate the proposed formulations.
 For $n = 100$ we created 8 instances with $m = 20,30,\ldots,100$,
 and they were tested with different values of $p$ from 5 to $\frac{m}{2}$,
-shown in the following table.
+shown in the following table \ref{tab:tests}.
 \begin{table}
   \centerign
+  \label{tab:tests}
   \begin{tabular}{|c|c|c|}\hline
     n & m & p \\ \hline
     100 & 20 & 5-10 \\
@@ -40,7 +41,7 @@ shown in the following table.
   \end{tabular}
 \end{table}
 
-The Model A was solved to optimality only when $p < 25$,
+Model A was solved to optimality only when $p < 25$,
 in an average time of 217 seconds.
 for the rest of the values of $p$, 
 no factible solution was found for $65\%$ of the test cases
@@ -48,6 +49,18 @@ in less than 20 minutes,
 for the rest test cases,
 an average gap of $27\%$ was obtained.
 
-The Model B was tested
-with each combination of $n,m,p$
+Model B was evaluated
+with the same combinations of $n,m,p$
 and $\ell$ from $1,\ldots,p$.
+For almost all cases,
+model B was solved to optimality
+in less than a minute for each case.
+When the value of $\ell$ 
+is close to $p$
+model resolution takes longer
+and in some cases
+optimal is not achieved.
+However,
+it can be seen
+that for different values of $\ell$
+the solutions obtained are the same.
