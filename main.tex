@@ -14,9 +14,11 @@
         linkcolor=black,citecolor=black,urlcolor=black}
 \usepackage{datetime} % monthname
 \usepackage{todonotes} % temporaly use for todo notes
+%\usepackage[disable]{todonotes} % temporaly use for todo notes
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{multirow}
+\usepackage{rotating}
 
 %%%%%%%%%%%%%%%%%%%%%
 % Definiendo campos %
@@ -28,12 +30,12 @@
 % En caso de que el grado tenga orientación o especialidad
 % llenar el siguiente campo dejando un ESPACIO INICIAL,
 % en caso contrario, dejar vacío
-\def\orientacion{ }
-\def\fecha{\monthname,  \the\year} % Coloca el mes con mayúscula inicial
+\def\orientacion{}
+\def\fecha{Junio  \the\year} % Coloca el mes con mayúscula inicial
 
 \def\asesor{Dr. Roger Z. R\'ios Mercado}
-\def\revisorA{Mar\'ia Ang\'elica Salazar Aguilar}
-\def\revisorB{Mar\'ia Guadalupe Villareal Marroqu\'in}
+\def\revisorA{Dra. Mar\'ia Ang\'elica Salazar Aguilar}
+\def\revisorB{Dra. Mar\'ia Guadalupe Villareal Marroqu\'in}
 % En el caso de que tu tesis sea de doctorado
 % activa la variable cambiándola a \doctoradotrue
 % y define tus otros dos revisores
