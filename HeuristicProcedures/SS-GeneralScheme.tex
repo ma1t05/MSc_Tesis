@@ -1,0 +1,59 @@
+\begin{figure}
+  \centering
+  \begin{tikzpicture} [
+      auto,
+      cloud/.style = { ellipse,
+        draw=blue,
+        fill=blue!20,
+        node distance=3cm,
+        minimum height=2em },
+      decision/.style = { diamond,
+        draw=blue,
+        thick,
+        fill=blue!20,
+        text width=5em,
+        text badly centered,
+        inner sep=1pt,
+        rounded corners },
+      block/.style    = { rectangle,
+        draw=blue,
+        thick, 
+        fill=blue!20,
+        text width=10em,
+        text centered,
+        rounded corners,
+        minimum height=2em },
+      line/.style     = { draw, thick, ->, shorten >=2pt },
+    ]
+    % Define nodes in a matrix
+    \matrix [column sep=5mm, row sep=10mm] {
+      & \node [block] (init) {Diversification Generation};
+      & &
+      \\
+      & \node (null1) {};
+      & \node [block] (update) {\textsf{Update Reference Set}};
+      & 
+      \\
+      & \node [cloud] (improve) {\textsf{Improvemenet}};
+      & \node [decision] (newsol) {\textsf{Is there a new solution?}};
+      & \node [cloud] (stop) {\textsf{Stop}};
+      \\
+      & \node [block] (combin) {\textsf{Solution Combination}};
+      & \node [cloud] (subset) {\textsf{Subset Generation}};
+      &
+      \\
+    };
+    % connect all nodes defined above
+    \begin{scope} [every path/.style=line]
+      \path (init)     |-    (update);
+      \path (update)   --    (newsol);
+      \path (newsol)   --    node {no} (stop);
+      \path (newsol)   --    node {yes} (subset);
+      \path (subset)   --    (combin);
+      \path (combin)   --    (improve);
+      \path (improve)  --    (null1);
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Scatter Search General Scheme}
+  \label{fig:SS_GS}
+\end{figure}

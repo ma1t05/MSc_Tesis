@@ -1,34 +1,48 @@
 \section{Proposed Metaheuristic}
+The Scatter Search (SS)
+is an evolutionary approach
+introduced by Glover \cite{glover1977heuristics}
+as a metaheuristic for integer programming.
+It is based on diversifying the search
+through the solution space.
+It operates on a set of solutions,
+named the Reference Set,
+formed by good and diverse solutions of the main population.
+These solutions are combined
+with the aim of generate
+new solutions with better fitness,
+while maintaining diversity.
+The General Scheme can be seen in Figure \ref{fig:SS_GS}.
+\input{HeuristicProcedures/SS-GeneralScheme}
+
 A Scatter-Search
 with a dynamic reference set
 was implemented,
 and a path relinking method
 is used as combination method.
-We opted for a dynamic reference set
-due the number of solutions generated
-in each combination is big.
+We used a dynamic reference set
+given that the number of solutions generated
+in each combination is large.
 To enhanced the solutions
 two improvement methods are included,
 one proposed by Berman \cite{berman1987stochastic},
 and a proposed Local Search.
+%\todo[inline]{Agregar background de Scatter Search}
 
-\input{HeuristicProcedures/alg_ss-template_init}
-In the Algorithm \ref{alg:SSInitial}
+In Algorithm \ref{alg:SSInitial} (see below)
 a Reference Set is created,
 consisting in the bests \textit{b} solutions,
-and the most diverse \text{b} solutions,
-to measure the diversity
-the metric used is
-the minimum perfect matching
-with each solution in the Reference Set.
+and the most diverse \text{b} solutions.
+To measure the diversity of a solution,
+the minimum cost perfect matching
+with each of the solutions of the Reference Set.
+\input{HeuristicProcedures/alg_ss-template_init}
 
+In Algorithm \ref{alg:SSPhase} (see bellow),
+each pair of solutions
+is combined using path relinking.
+However,
+since the Reference Set is dynamic
+some solutions are displaced
+before been combined.
 \input{HeuristicProcedures/alg_ss-template_phase}
-In the Algorithm \ref{alg:SSPhase}
-Each pair  of solutions
-is tried to combine
-using the path relinking,
-because the Reference Set is dynamic
-some pairs do not come to be combined,
-since the solutions
-are displaced
-before trying to combine them.
