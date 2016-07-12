@@ -1,7 +1,7 @@
 \subsection{Covering models}
 % source: brotcorner2003ambulance
 In the location set covering model (LSCM)
-introduced Toregas et al. \cite{toregas1971location}
+introduced by Toregas et al. \cite{toregas1971location}
 the aim
 is to minimize
 the number of ambulances needed
@@ -54,19 +54,19 @@ which is the critical distance (time)
 beyond which a demand area is considered not covered.
 A demand area is
 therefore
-considered covered
+considered as covered
 if
 it is within a predefined critical distance (say D)
 from at least one of the existing facilities.
 
 The Maximum Expected Covering Location Problem (MEXCLP)
-defined by Daskin \cite{daskin1983maximum}
+defined by Daskin \cite{daskin1983maximum},
 whose objective is to
 maximize the expected coverage
 of all demand areas under consideration,
-assume that servers operate independently
+assumes that servers operate independently
 and that all servers have the same busy probability (workload) $\rho$,
-allowings that more than one server be situated in any given location.
+allowing that more than one server be situated in any given location.
 % source: golberg1990validating
 Daskin et al. \cite{daskin1981hierarchical},
 assume
@@ -75,19 +75,19 @@ and coverage is an ``all-or-nothing'' property.
 % eos
 
 ReVelle et al. \cite{revelle1989maximum}
-proposes two variations for the Maximum Availability Location Problem (MALP)
-locate \textit{p} servers
-in suchs a way
+propose two variations of the Maximum Availability Location Problem (MALP),
+which locates \textit{p} servers
+in such a way
 as to minimize the population
-which will find a server available within $\alpha$ reliability
-the firstone assume,
-like Daskin,
+which will find a server available within $\alpha$ reliability.
+The first one assumes,
+like in Daskin,
 that each server has the same busy probability,
-and predetermine the number of times a demand point needs to be covered.
-The other,
-allow busy fractions
-to be different in the various sections of a region under consideration
-(but not for each server to be located)
+and predetermines the number of times a demand point needs to be covered.
+The second one,
+allows busy fractions
+to be different in the various sections of the region under consideration
+(but not for each server to be located).
 
 These models
 emphasize the importance of additional coverage
@@ -99,8 +99,8 @@ possibly
 the only server in a particular coverage area,
 might not be available when requested.
 Gendreau et al. \cite{gendreau1997solving}
-proposes a model with double coverage,
-uses two radious $r_1$, and $r_2$ $(r_2 > r_1)$,
+propose a model with double coverage,
+use two radious $r_1$, and $r_2$ $(r_2 > r_1)$,
 to locate $p$ ambulances,
 such that
 all the demand must be covered by an ambulance
@@ -111,4 +111,4 @@ must also be within $r_1$ units of an ambulance,
 which may or may not be the same ambulance that
 covers this customer within $r_2$ time units.
 Note that a feasible solution may not exist
-if the parameters $r_1$, $r_2$ and $\alpha$ are too restrictive.
+if the parameters $r_1$, $r_2$, and $\alpha$ are too restrictive.
