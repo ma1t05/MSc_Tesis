@@ -1,6 +1,6 @@
 \section{Description of Components}
 The components of Scatter Search template \cite{glover1998template}
-consist of
+consists of
 specific subroutines of the following types:
 \begin{itemize}
 \item A Diversification Generator
@@ -12,57 +12,65 @@ We described below
 each of the components.
 
 \subsection{A Diversification Generator}
-To generate
+To component is used to generate
 a collection of diverse trial solutions,
 using an arbitrary trial solution
 (or seed solution) as an input.
 \input{HeuristicProcedures/alg_ss-init}
 In our case,
 the generator was a multi-start
-consisting of a GRASP
+consisting of a GRASP.
 \input{HeuristicProcedures/GRASP}
 
 \subsection{An Improvement Method}
-To transform
-a trial solution
+The goal of this component
+is to transform a trial solution
 into one or more enhanced trial solutions. 
-(
 If no improvement
 of the input trial solution results, 
 the ``enhanced'' solution
 is considered to be
-the same as the input solution.)
+the same as the input solution.
 
-We have two improvement methods,
-the first an adaptation
-of the proposed method by Berman et al. \cite{berman1987stochastic}
-(See Appendix \ref{ch:Berman} for mode details)
-and the second,
+We developed two improvement methods,
+the first one is an adaptation
+of the method proposed by Berman et al. \cite{berman1987stochastic}
+(see Appendix \ref{ch:Berman} for mode details)
+and the second one,
 a Local Search
 described in the next section.
 %\todo[inline]{Incluir descripcion del metodo de Berman}
 \input{HeuristicProcedures/LocalSearch}
 
 \subsection{A Reference Set Update Method}
-To build and maintain a Reference Set
+This method is used
+to build and maintain a Reference Set
 consisting of the \textit{b} best solutions found
 (where the value of \textit{b}
 is typically small,
 e.g., between 20 and 40),
-organized to provide efficient accessing
+organized in an array
+to provide efficient accessing
 by other parts of the method.
 
 We choose
-a two tier Reference Set
-to maintain a part of diverse solutions,
-this because the combination method
-generates similar solutions to input.
-And we opt for be dynamic
-since the number
-of generated solutions
-is big (proportional to \textit{p}).
+a two level Reference Set
+to maintain
+good quality solutions
+and diverse solutions.
+This is
+because the combination method
+generates similar solutions as the input,
+%And we opt for be dynamic
+%since the number
+%of generated solutions
+%is big (proportional to \textit{p}).
+and Moreover,
+the size of the reference set is dynamicall determined,
+according to $p$.
 
 Whenever the Reference Set is update
+\todo{No se entiende!}
 it is try to incorporate
 the solutions generated in a combination,
 because the Reference Set is divided
@@ -73,27 +81,35 @@ If a solutions enters the Reference Set,
 degrades solutions lower quality to it,
 removing the worst solution of the Reference Set.
 
-After trying to accommodate solutions
-for quality criterion,
+After adding solutions to the reference set
+by using the quality criterion,
 solutions that do not enter the Reference Set
-and those that are removed,
-they are try to enter with diversity criterion.
-reassessing the diverse solutions,
-since they evaluation depends
-on the quality members.
+and those that have been removed,
+are considered to be part
+of the Reference Set
+by using the diversity criterion.
+%reassessing the diverse solutions,
+%since they evaluation depends
+%on the quality members.
+\todo[inline]{Agregar como se mide la diversidad}
 
 \subsection{A Subset Generation Method}
-To operate on the Reference Set,
-to produce a subset of its solutions
-as a basis for creating combined solutions.
+This component operates on the Reference Set,
+%to produce a subset of its solutions
+%as a basis for creating combined solutions.
+it is used to create subsets
+of solutions that are combined
+by the Combination Method.
 \input{HeuristicProcedures/alg_ss-subset}
-We only look for subsets of size two
+We only look for subsets of size two,
 i.e. pairs of solutions,
-because our Reference Set is dynamic,
-to identify the new solutions,
-we label solutions as new and old
-at the start of each iteration.
-We combine first the new solutions
+because our Reference Set is dynamic.
+To identify the new solutions,
+we label the solutions as new and old
+at the begining of each iteration.
+Then,
+we combine first the new solutions
+\todo{Refrasear}
 between them,
 next the new solutions with the old,
 the new solutions that enters in the Reference Set
@@ -109,33 +125,35 @@ is evaluated to be in the Reference Set
 as a diverse solution.
 
 \subsection{A Solution Combination Method}
-To transform a given subset of solutions 
+With this component,
+our scatter search
+transforms a given subset of solutions 
 produced by the Subset Generation Method
 into
 one or more combined solution vectors.
 
 We choose a path relinking as a combination method
 consisting of
-determine a match between servers,
+determining a match between servers,
 this match can be
 \begin{itemize}
 \item Perfect Matching:
   minimizing the distance between paired servers
 \item Workload Matching:
   sorting the servers of both solutions
-  according to the workloads,
-  and match them according these sorted lists.
+  according to their workload,
+  and match them according to these sorted lists.
 \item Random Matching
 \end{itemize}
-once we have the matching
+Once we have the matching
 we proceed from one solution
-to interchange each server
-(one by step)
-until end in the other solution,
+to interchange each server,
+one by one
+until the other solution is reached;
 in each interchange
 we have a new solution.
 To make the interchanges
-we have three options
+we have three options:
 \begin{itemize}
 \item Nearest First
 \item Farthest First
