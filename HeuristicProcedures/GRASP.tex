@@ -1,6 +1,6 @@
 \subsubsection{GRASP}
 %Why did you choose GRASP?
-We choose GRASP
+We chose GRASP
 because
 in the proposed problem
 any allocation of sites for adjusters
@@ -13,26 +13,27 @@ random points.
 We start with a partial solution
 (location of a smaller number of adjusters)
 with only one adjuster allocated,
-evaluate each site with the greedy function,
-and choose one from the best $\alpha$ evaluations,
-until each adjuster was locate.
+evaluate each site with a greedy function,
+and choose one from the $\alpha$ best evaluated;
+this process is repeated
+until each adjuster is located.
 %Which evaluation functions did you use?
 Several functions were evaluated
-for constructive algorithm
-but because presented cooperativeness
-it is difficult
-to approximate the final results
-in a partial solution
-with a greedy function.
-We use three greedy functions
+for the constructive algorithm
+%but because presented cooperativeness
+%it is difficult
+%to approximate the final results
+%in a partial solution
+%with a greedy function.
+We used three greedy functions
 to test the construction.
 %Fist function
 The first function,
 was the p-mean
-or the sum the distances
-of each allocation 
-from each located adjuster
-with their nearest demand points.
+consisting
+on the sum of the distances
+between each demand point 
+and their nearest adjuster.
 \begin{equation}
   \label{eq:grasp1}
   \sum_{j=1}^{m}{
@@ -43,6 +44,7 @@ with their nearest demand points.
 \end{equation}
 %Second function
 For the second function,
+\todo{Refrasear y simplificar descripcion}
 we try to incorporate cooperatively,
 including in the evaluation
 the distance of allocations
@@ -62,8 +64,8 @@ to their $k-1$ nearest demand points.
   }
 \end{equation}
 %Third function
-The third function,
-consist in use the Mean Service Time (MST) calibration method
+The third function
+uses the Mean Service Time (MST) calibration method
 proposed by Jarvis \cite{jarvis1985approximating},
 to obtain more accuracy values
 of the current mean response time.

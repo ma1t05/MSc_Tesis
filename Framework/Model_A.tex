@@ -13,7 +13,7 @@ for all possible orders.
 The following assumptions are considered in the model:
 \begin{itemize}
 \item The probability that an adjuster is busy
-  is $\rho$ and is unaffected by the state of the system.
+  is $\rho$ and it is independent of the state of the system.
 \item There is a strict ordering of the basis preferred for each zone
   that does not depend
   on the current state of the system.
@@ -33,7 +33,7 @@ Sets and indexes:
 \item \textit{p} number of available adjusters
 \item \textit{i} index for demand points;
   $i \in V = \{1,2,\ldots,n\}$ 
-\item \textit{j} index for potential site for adjusters/facilities
+\item \textit{j} index for potential sites for adjusters/facilities
   $j \in W = \{1,2,\ldots,m\}$
 \item $k$ index for possible order;
   $k \in K = \{1,2\ldots,p\}$
@@ -46,11 +46,11 @@ Sets and indexes:
 Parameters:
 \begin{itemize}
 \item $\lambda_i$ arrival rate of calls
-  for demand point \textit{i}
+  from demand point \textit{i}
 \item $\rho$ is the utilization of each adjuster,
   the value is between 0 and 1, 
   where 0 means that the server is always idle.
-  To obtain an approximate value for $\rho$
+  To obtain an approximate value of $\rho$
   we use the formula proposed by Berman et al.
   \cite{berman1982median}
   \begin{*equation}
@@ -75,13 +75,13 @@ Variables:
 \item $x_j =
   \begin{cases} 
     1 & \mbox{if an adjuster is placed at potential site } j \\
-    0 & \mbox{otherwise}
+    0 & \mbox{otherwise.}
   \end{cases}$
 \item $y_{ij}^{k} =
   \begin{cases} 
     1 & \mbox{if the adjuster at site } j \mbox{, is the }
     k\mbox{-th to cover demand point } i \\
-    0 & \mbox{otherwise}
+    0 & \mbox{otherwise.}
   \end{cases}$
 \end{itemize}
 
@@ -104,7 +104,7 @@ subject to
   \sum_{j \in W}{x_j}
   & = p
 \end{align}
-Only locate $p$ adjusters
+Locate only $p$ adjusters
 \begin{align}
   \label{eq:3}
   \sum_{j \in W}{y_{ij}^{k}}

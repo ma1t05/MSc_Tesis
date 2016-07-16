@@ -5,18 +5,18 @@ developed by Larson  \cite{larson1974hypercube,larson1975approximating}
 are the most well known queueing approaches.
 %and extended by others (see Swersey \cite{swersey1994deployment})
 % source: galvao2008emergency
-These are not an optimization models;
-they are only a descriptive models
-that permits the analysis of scenarios.
+These are not optimization models;
+they are only descriptive models
+that permit the analysis of scenarios.
 Both models
 estimate system operating characteristics
 that are used to evaluate a series of objectives.
-They can evaluate cooperation between vehicles,
-their weaknesses, include
+They can evaluate cooperation between vehicles;
+their weaknesses include:
 \begin{itemize}
 \item Assumptions of an exponentially distributed service time.
 \item Computational difficulties for problems with many vehicles.
-\item Require that service time be solely vehicle-dependent
+\item Require that service time be only vehicle-dependent
   rather than call location-dependent.
 \end{itemize}
 
@@ -29,7 +29,7 @@ Optimization models for locating Emergency Medical Services (EMS)
 that use Hypercube or A-Hypercube as a function evaluation subroutine
 include Jarvis' location-allocation problem \cite{jarvis1975optimization},
 Berman and Larson's congested median problem \cite{berman1982median},
-Benviniste's location-allocation problem \cite{benveniste1985solving}.
+Benviniste's location-allocation problem \cite{benveniste1985solving},
 and Berman, Larson and Parkan's
 stochastic queue p-median problem \cite{berman1987stochastic}.
 These methods are heuristic local improvement approaches
@@ -39,17 +39,17 @@ that assume it is possible to locate a vehicle in every zone.
 % source: goldber1990simulation
 Call location-dependent service time
 can be modeled using the Mean Service Calibration method (denoted MSC).
-As in cases of
-Jarvis \cite{jarvis1975optimization} 
+As in Jarvis \cite{jarvis1975optimization} 
 and Halpern \cite{halpern1977accuracy}
 where mean service time,
 as opposed to the distribution of service time,
+\todo{Corregir para que se entienda}
 and show that
 is sufficient to obtain accurate estimates of system performance.
 The major shortcoming of MSC is that either
 Hypercube or A-Hypercube
 is evaluated in each iteration;
-it can thus be a computationally expensive approach.
+can thus be a computationally expensive approach.
 
 To eliminate the computational inefficiency of the MSC method,
 Jarvis \cite{jarvis1985approximating} developed
@@ -76,9 +76,9 @@ to adjust the service times
 by means of a calibration process,
 which can be performed
 using a simple iterative procedure
-that is proposed by Berman et al. \cite{berman1987stochastic}.
+proposed by Berman et al. \cite{berman1987stochastic}.
 Basically,
-the procedure consists of
+the procedure consists on
 verifying
 if there are
 significant differences among the input mean service times

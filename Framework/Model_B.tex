@@ -18,16 +18,20 @@ where $\ell$ is large enough but less than $p$.
 Parameters:
 \begin{itemize}
 \item $M$ is a large integer
-\item $\ell$ the number of allowed adjusters per demand point
-\item $a_{ik}$ the $k$-th preferred location server
+\item $\ell$ is the number of allowed adjusters per demand point
+\item $a_{ik}$ contains the $k$-th preferred location server
   regarding the point $i$.
 \end{itemize}
 
 Variables:
 \begin{itemize}
-\item $z_j$ the number of adjusters placed at site $j$
-\item $y_{ij}^k$ if adjuster in $j$,
-  is the $k$-th to cover demand point $i$
+\item $z_j$ represents the number of adjusters placed at site $j$
+\item $y_{ij}^k =
+  \begin{cases} 
+    1 & \mbox{if the adjuster at site } j \mbox{, is the }
+    k\mbox{-th to cover demand point } i \\
+    0 & \mbox{otherwise.}
+  \end{cases}$
 \end{itemize}
 
 The objective,
@@ -43,13 +47,13 @@ and the addition of the following binary variables
   \begin{cases}
     1 & \mbox{if the number of adjusters between } i 
     \mbox{ and } j \mbox{, inclusive, is less than } \ell \\
-    0 & \mbox{otherwise}
+    0 & \mbox{otherwise.}
   \end{cases}$
 \item $v_{ij} = 
   \begin{cases} 
     1 & \mbox{if the number of adjusters between } i
     \mbox{ and } j \mbox{, is less than } \ell - 1 \\
-    0 & \mbox{otherwise}
+    0 & \mbox{otherwise.}
   \end{cases}$
 \end{itemize}
 
@@ -68,7 +72,7 @@ Minimize the average expected response time
   \sum_{j \in W}{z_j}
   & = p
 \end{align}
-Only locate $p$ adjusters
+Locate only $p$ adjusters
 \begin{align}
   \sum_{j \in W}{y_{ij}^{k}}
   & = 1
@@ -105,15 +109,15 @@ Relationship between variables \textit{z} and \textit{y}
 These two constraints
 set the relationship
 between the $z$ and $u$ variables.
-If $u = 1$
+If $u = 1$,
 (\ref{eq:relzu2}) become redundant,
-and contraint (\ref{eq:relzu1}) guarantees
+and contraints (\ref{eq:relzu1}) guarantee
 that the number of adjusters between $i$ and $j$
-is less or equal than $\ell$,
+is less or equal than $\ell$;
 otherwise
-if $u = 0$
-the equation (\ref{eq:relzu1}) become redundant,
-and equation (\ref{eq:relzu2}) guarantees
+if $u = 0$,
+(\ref{eq:relzu1}) become redundant,
+and constraints (\ref{eq:relzu2}) guarantee
 that the number of adjusters between $i$ and $j$
 is more than $\ell$.
 \begin{align}
@@ -125,9 +129,9 @@ is more than $\ell$.
   & i \in V,
   & j \in W
 \end{align}
-Assign $z_j$ times $j$ to $i$ if $u_{ij}=1$,
+assign $z_j$ times $j$ to $i$ if $u_{ij}=1$;
 otherwise
-if becomes redunant.
+if becomes redundant.
 \begin{align}
   \sum_{r \in S_{ij}}{
     z_{r}
@@ -145,7 +149,7 @@ if becomes redunant.
   & i \in V,
   & j \in W
 \end{align}
-Analogus to constraints (\ref{eq:relzu1})-(\ref{eq:relzu2})
+analogus to constraints (\ref{eq:relzu1})-(\ref{eq:relzu2})
 these constraints
 set the relationship
 between the $z$ and $v$ variables.
@@ -173,7 +177,7 @@ between the $z$ and $v$ variables.
   & j \in W
 \end{align}
 Assign $j$ to $i$
-the times remaining to complete $\ell$ assignments
+the remaining times to complete $\ell$ assignments
 \begin{align}
   y_{ij}^{k}
   & \leq u_{ij}
@@ -183,7 +187,7 @@ the times remaining to complete $\ell$ assignments
 \end{align}
 Assign $j$ to $i$
 only if
-it is in the first $\ell$ adjusters near $i$
+$j$ is one of the first $\ell$ adjusters near $i$
 \begin{align}
   z_j
   & \in \{0,1,\ldots,p\}
