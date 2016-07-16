@@ -11,10 +11,10 @@
 %and the proposed model grows to over one million variables.
 %  For some large instances ($n = 50$ , $m = 30$)%
 
-These test were evaluated in
+These tests were evaluated in
 a Lanix Spine BW Processor Intel Xenon,
 CPU E5-2867W, 3.10 GHz.
-With operative system Ubuntu 14.04.3 LTS
+with operative system Ubuntu 14.04.3 LTS.
 The models were solved with CPLEX 12.6.0.0,
 and they were coded in C++.
 
@@ -22,7 +22,7 @@ Different random instances were generated
 to validate the proposed formulations.
 For $n = 100$ we created 8 instances with $m = 20,30,\ldots,100$,
 and they were tested with different values of $p$ from 5 to $\frac{m}{2}$,
-shown in the following table \ref{tab:tests}.
+(see table \ref{tab:tests}).
 \begin{table}
   \centering
   \begin{tabular}{|c|c|c|}\hline
@@ -44,18 +44,19 @@ shown in the following table \ref{tab:tests}.
 
 Model A was solved to optimality only when $p < 25$,
 in an average time of 217 seconds.
-for the rest of the values of $p$, 
-no factible solution was found for $65\%$ of the test cases
-in less than 20 minutes,
+For the remaingin values of $p$, 
+no factible solution was found for $65\%$ of the tested cases
+\todo{Explicar bien estos porcentajes}
+in less than 20 minutes.
 for the rest test cases,
 an average gap of $27\%$ was obtained.
 
 Model B was evaluated
 with the same combinations of $n,m,p$
-and $\ell$ from $1,\ldots,p$.
-For almost all cases,
-model B was solved to optimality
-in less than a minute for each case.
+and $\ell$ from 1 to $p$.
+For almost all tested instances,
+model B allowed CPLEX to find an optimal solution
+in less than a minute.
 \begin{figure}[!ht]
   \centering
   \includegraphics[scale=0.6]{graph_01}
