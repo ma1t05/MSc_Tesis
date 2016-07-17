@@ -6,48 +6,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Cargando paquetes y definiendo opciones %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Aquí puedes cargar los paquetes que vas a usar. La clase
-% fime ya incluye babel, inputenc, graphicx y los de la AMS.
-% Cargar un paquete está a tu libertad (y responsabilidad).
-\usepackage{hyperref}
-    \hypersetup{breaklinks=true,colorlinks=true,
-        linkcolor=black,citecolor=black,urlcolor=black}
-\usepackage{datetime} % monthname
-\usepackage{todonotes} % temporaly use for todo notes
-%\usepackage[disable]{todonotes} % temporaly use for todo notes
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{multirow}
-\usepackage{rotating}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric}
-\usetikzlibrary{shapes.arrows}
-\usepackage{array}
-
+\input{packages}
 %%%%%%%%%%%%%%%%%%%%%
 % Definiendo campos %
 %%%%%%%%%%%%%%%%%%%%%
-\def\titulo{Optimal Location of Car Wreck Adjusters}
-\def\autor{Luis Alberto Maltos Ortega}
-\def\matricula{1390200}
-\def\grado{Maestr\'ia en Ciencias en Ingenier\'ia de Sistemas}
-% En caso de que el grado tenga orientación o especialidad
-% llenar el siguiente campo dejando un ESPACIO INICIAL,
-% en caso contrario, dejar vacío
-\def\orientacion{}
-\def\fecha{Junio  \the\year} % Coloca el mes con mayúscula inicial
-
-\def\asesor{Dr. Roger Z. R\'ios Mercado}
-\def\revisorA{Dra. Mar\'ia Ang\'elica Salazar Aguilar}
-\def\revisorB{Dra. Mar\'ia Guadalupe Villareal Marroqu\'in}
-% En el caso de que tu tesis sea de doctorado
-% activa la variable cambiándola a \doctoradotrue
-% y define tus otros dos revisores
-\newif\ifdoctorado\doctoradofalse
-\def\revisorC{Nombre del revisor C}
-\def\revisorD{Nombre del revisor D}
-% El visto bueno siempre va
-\def\vobo{Dr. Simón Martínez Martínez}
+\input{definitions}
 
 \includeonly{
   Misc/Cover,
@@ -80,6 +43,7 @@
 \listoffigures
 \listoftables
 \listofalgorithms
+%\addcontentsline{toc}{chapter}{TODO LIST}
 \listoftodos
 \todo[inline]{Remove list of to do's when complete}
 
