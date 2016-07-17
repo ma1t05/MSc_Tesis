@@ -44,19 +44,20 @@ and their nearest adjuster.
 \end{equation}
 %Second function
 For the second function,
-\todo{Refrasear y simplificar descripcion}
-we try to incorporate cooperatively,
-including in the evaluation
-the distance of allocations
-from each located adjuster,
-with their $k$ nearest demand points
+%%\todo{Refrasear y simplificar descripcion}
+%we try to incorporate cooperatively,
+include in the evaluation
+the distances
+from each demand point 
+with their $\ell$ nearest adjusters
+($t_{ij}y_{ij}^{k}$),
 plus \textit{idle} probability
 given that is allocated
-to their $k-1$ nearest demand points.
+at order $k$.
 \begin{equation}
   \label{eq:grasp2}
   \sum_{j=1}^{m}{
-    \sum_{k=1}^{p}{
+    \sum_{k=1}^{\ell}{
       \sum_{i=1}^{n}{
         h_{ij}^{k}t_{ij}y_{ij}^{k}
       }
