@@ -1,17 +1,29 @@
 \chapter{Heuristic Procedures}
 \label{ch:Heuristic}
-Because the problem stochasticity
-linear models
-can not evaluate solutions accurately,
-since the assumption made
-which assumes
-that all adjusters have the same occupation,
-so the Hypercube model is used
-in conjunction with
-the service mean time calibration process
-(see Berman et al. \cite{berman1987stochastic})
-to obtain the main parameters.
-\todo[inline]{Refrasear por que no se entiende}
+% El problema es estocastico
+The problem addressed
+has stochastic properties,
+% Las aproximaciones lineales requieren relajaciones
+% y son menos aproximados
+limiting the validity of linear models
+to cases when certain assumptions are required.
+As they were assumed in the previous chapter;
+all the adjusters have the same busy probability,
+or has not queue.
+% La aproximacion con metodos heuristicos requieren menos relajaciones
+The use of heuristic methods
+to solve the problem
+it allow us to skip some assumptions.
+%so the Hypercube model is used
+%in conjunction with
+%the service mean time calibration process
+%(see Berman et al. \cite{berman1987stochastic})
+%to obtain the main parameters.
+%\todo[inline]{Refrasear por que no se entiende}
+In this chapter,
+heuristic proposal
+and its components
+are detailed.
 
 \input{HeuristicProcedures/ScatterSearch}
 \input{HeuristicProcedures/SS_Components}
