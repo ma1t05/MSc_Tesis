@@ -1,17 +1,19 @@
 \begin{algorithm}
-  \caption{Scatter Search} \label{alg:SSPhase}
+  \caption{General Scheme of the Scatter Search} \label{alg:SSPhase}
   \begin{algorithmic}
     \Procedure{Scatter Search Phase}{$RefSet$}
     \Repeat
-    \State $G_X \gets SubsetGeneration(RefSet)$
+    \State $G_{X} \gets SubsetGeneration(RefSet)$
     \ForAll {$X \in G_X$}
-    \State $C_X = SolutionCombination(X)$
+    \If {$X \subset RefSet$}
+    \Comment {Some element of $X$ may have been removed}
+    \State $C_{X} = SolutionCombination(X)$
     \ForAll{$Sol \in C_X$}
     \State $Improvement(Sol)$
-    \State $Update(RefSet,Sol)$
     \EndFor
-    \EndFor
-    \Until {$HasNotChanged(RefSet)$  \textbf{or} $MaxIterations$}
+    \State $RefSet.Update(C_{X})$
+    \EndIf \EndFor
+    \Until {$NoNewSolutions(RefSet)$}
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}

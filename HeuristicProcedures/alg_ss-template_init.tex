@@ -1,13 +1,22 @@
 \begin{algorithm}
-  \caption{Scatter Search} \label{alg:SSInitial}
+  \caption{Scatter Search Initial Phase} \label{alg:SSInitial}
   \begin{algorithmic}
-    \Procedure{Initial Phase}{}
-    \State $Sols \gets SeedSolutions()$
+    \Procedure{Initial Phase}{} 
+    \State $Iteration \gets 0$
+    \State $IterationsUnchanged \gets 0$
+    \State $RefSet \gets EmptySet()$
     \Repeat
-    \State $DiversificationGenerator(Sols)$
+    \State $Sols \gets DiversificationGenerator()$
     \State $Improvement(Sols)$
-    \State $ReferenceSet(Sols)$
-    \Until {$HasNotChanged(Sols)$ \textbf{or} $MaxIterations$}
+    \Comment {either of the two methods proposed}
+    \State $RefSet.Update(Sols)$
+    \State $Iteration \gets Iteration + 1$
+    \State $IterationsUnchanged \gets IterationsUnchanged + 1$
+    \If {$HasNewSolutions(RefSet)$}
+    \State $IterationsUnchanged \gets 0$
+    \EndIf
+    \Until {$IterationsUnchanged \geq MaxIterUnchanged$
+      \textbf{or} $Iteration \geq MaxIter$}
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}

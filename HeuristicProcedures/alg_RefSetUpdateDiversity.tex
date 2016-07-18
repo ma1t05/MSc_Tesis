@@ -1,0 +1,22 @@
+\begin{algorithm}
+  \caption{Reference Set Update Diversity Method}
+  \label{alg:rs_updatediv}
+  \begin{algorithmic}[0]
+    \Procedure{ReferenceSet.UpdateDiversity}{}
+    \State $Bin \gets PublicBin()$
+    \State $Bin \gets Bin \cup RefSet.DiversitySols()$
+    \State $RefSet.Remove(RefSet.DiversitySols())$
+    \For{$Sol \in Bin$}
+    \State $Sol.DiversityValue \gets MinumumCostPerfectMatching(RefSet,Sol)$
+    \EndFor
+    \Repeat
+    \State $DiverseSol \gets MostDiverse(Bin)$
+    \State $Bin.Remove(DiverseSol)$
+    \State $RefSet.InsertByDiversity(DiverseSol)$
+    \For{$Sol \in Bin$}
+    \State $Sol.UpdateDiversityValue(DiverseSol)$
+    \EndFor
+    \Until{$Count(RefSet.DiversitySols()) = b$ \textbf{or} $Count(Bin) = 0$}
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
