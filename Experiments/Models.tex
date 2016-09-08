@@ -20,8 +20,11 @@ and they were coded in C++.
 
 Different random instances were generated
 to validate the proposed formulations.
-For $n = 100$ we created 8 instances with $m = 20,30,\ldots,100$,
+For $n = 100$
+which can be considered a medium-size case,
+we created 8 instances with $m = 20,30,\ldots,100$,
 and they were tested with different values of $p$ from 5 to $\frac{m}{2}$,
+and fixed values of $\mu$ and $\lambda$
 (see table \ref{tab:tests}).
 \begin{table}
   \centering
@@ -42,14 +45,16 @@ and they were tested with different values of $p$ from 5 to $\frac{m}{2}$,
   \label{tab:tests}
 \end{table}
 
-Model A was solved to optimality only when $p < 25$,
-in an average time of 217 seconds.
-For the remaingin values of $p$, 
-no factible solution was found for $65\%$ of the tested cases
-\todo{Explicar bien estos porcentajes}
+Model A was solved to optimality
+in an average time of 217 seconds,
+when $p < 25$.
+For the remaingin instances,
+no factible solution was found
+for $65\%$ of the tested cases
 in less than 20 minutes.
-for the rest test cases,
-an average gap of $27\%$ was obtained.
+%\todo{Explicar bien estos porcentajes}
+For instances in which a feasible solution was found
+the average gap obtained was $27\%$.
 
 Model B was evaluated
 with the same combinations of $n,m,p$

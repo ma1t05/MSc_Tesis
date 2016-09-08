@@ -2,7 +2,7 @@
 The purpose of this experiment
 is to assess the behavior of the three greedy functions
 used by the greedy randomized construction
-of the diversificatione generator method,
+of the diversification generator method,
 as well as the $\alpha$ parameter.
 To this end
 we ran the heuristic consisting of
@@ -19,12 +19,22 @@ The value of $\alpha = 0$ means that
 the procedure becomes completely greedy,
 and a value of $\alpha = 1$ means that
 the procedure becomes completely random.
-\missingfigure[figwidth=6cm]{GRASP results of Objective versus $\alpha$}
-
+\begin{figure}[!ht]
+  \centering
+  \label{fig:grasp-results}
+  \includegraphics[scale=0.7]{GRASPr1}
+  \caption{Objective value versus $\alpha$ for first greedy function}
+\end{figure}
 The test suggest
+(see Figure \ref{fig:grasp-results})
 that
 with a more random version
 there are more different solutions
 and a wide range of objective values
 achieving better solutions.
-\todo{Agregar mas comentarios}
+The same goes for the other functions.
+%\todo{Agregar mas comentarios}
+This indicates
+that there is too much interaction between servers
+making it difficult to attack the problem
+in the construction stage.
