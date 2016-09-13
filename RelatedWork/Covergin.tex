@@ -68,7 +68,7 @@ assumes that servers operate independently
 and that all servers have the same busy probability (workload) $\rho$,
 allowing that more than one server be situated in any given location.
 % source: golberg1990validating
-Daskin et al. \cite{daskin1981hierarchical},
+Daskin et al. \cite{daskin1981hierarchical}
 assume
 that travel times are deterministic
 and coverage is an ``all-or-nothing'' property.
@@ -78,10 +78,11 @@ ReVelle et al. \cite{revelle1989maximum}
 propose two variations of the Maximum Availability Location Problem (MALP),
 which locates \textit{p} servers
 in such a way
-as to minimize the population
-which will find a server available within $\alpha$ reliability.
-The first one assumes,
-like in Daskin,
+so as to maximize the population
+that will find a server available
+within a given rellability value of $\alpha$.
+The first model assume,
+such as Daskin,
 that each server has the same busy probability,
 and predetermines the number of times a demand point needs to be covered.
 The second one,
@@ -100,7 +101,8 @@ the only server in a particular coverage area,
 might not be available when requested.
 Gendreau et al. \cite{gendreau1997solving}
 propose a model with double coverage,
-use two radious $r_1$, and $r_2$ $(r_2 > r_1)$,
+using two radious values 
+$r_1$, and $r_2$ $(r_2 > r_1)$,
 to locate $p$ ambulances,
 such that
 all the demand must be covered by an ambulance

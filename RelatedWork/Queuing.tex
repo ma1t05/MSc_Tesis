@@ -1,29 +1,34 @@
 \section{Queueing Models}
 The hypercube model (denoted Hypercube)
-and the hypercube approximation (denoted A-Hypercube).
-developed by Larson  \cite{larson1974hypercube,larson1975approximating}
+and the hypercube approximation (denoted A-Hypercube),
+developed by Larson  \cite{larson1974hypercube,larson1975approximating},
 are the most well known queueing approaches.
+for addressing ... %pendiente
 %and extended by others (see Swersey \cite{swersey1994deployment})
 % source: galvao2008emergency
-These are not optimization models;
-they are only descriptive models
+These are not optimization models,
+but they are descriptive models
 that permit the analysis of scenarios.
 Both models
 estimate system operating characteristics
 that are used to evaluate a series of objectives.
-They can evaluate cooperation between vehicles;
-their weaknesses include:
+They can evaluate cooperation between vehicles.
+Some of their limitations are:
 \begin{itemize}
-\item Assumptions of an exponentially distributed service time.
-\item Computational difficulties for problems with many vehicles.
-\item Require that service time be only vehicle-dependent
+\item assumptions of an exponentially distributed service time,
+\item computational difficulties for problems with many vehicles,
+\item require that service time be only vehicle-dependent
   rather than call location-dependent.
 \end{itemize}
 
-The computational problems are remediated in the A-Hypercube
-by approximating the vehicle busy probabilities
+The computational issues
+present in the Hypercube
+are addressed in the A-Hypercube.
+The vehicle busy probabilities
+are dealt with
 by solving a system of nonlinear equations
-whose size depends on the number of vehicles.
+whose size
+depends on the number of vehicles.
 
 Optimization models for locating Emergency Medical Services (EMS)
 that use Hypercube or A-Hypercube as a function evaluation subroutine
@@ -44,8 +49,10 @@ can be modeled using the Mean Service Calibration method (denoted MSC).
 % Jarvis y Halpern dan casos donde MST es suficiente para obtener estimaciones
 As in Jarvis \cite{jarvis1975optimization} 
 and Halpern \cite{halpern1977accuracy}
-where mean service time,
-is sufficient to obtain accurate estimates of system performance.
+where
+mean service time,
+is sufficient
+to obtain accurate estimates of system performance.
 % en oposicion a
 %%as opposed to the distribution of service time,
 %%\todo{Corregir para que se entienda}
@@ -58,7 +65,7 @@ To eliminate the computational inefficiency of the MSC method,
 Jarvis \cite{jarvis1985approximating} developed
 an approximation model
 for spatially distributed queueing systems
-\footnote{See Appendix \ref{ch:Jarvis} for more infomation}.
+(see Appendix \ref{ch:Jarvis}).
 The model assumes that call service time
 is call location-dependent,
 where all vehicles
@@ -96,7 +103,7 @@ are sufficiently small.
 This procedure is called
 a calibration process.
 Note that
-it takes into account
+this procedure takes into account
 that the mean travel time
 depends on the location of the user
 and the identity of the server.
