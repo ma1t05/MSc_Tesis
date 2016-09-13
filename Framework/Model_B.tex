@@ -72,14 +72,15 @@ Minimize the average expected response time
   \sum_{j \in W}{z_j}
   & = p
 \end{align}
-Locate only $p$ adjusters
+Locate $p$ adjusters only
 \begin{align}
   \sum_{j \in W}{y_{ij}^{k}}
   & = 1
   & i \in V, k
   &\in \{1,\ldots,\ell\}
 \end{align}
-Each demand point $i$ is covered by an adjuster on each order until $\ell$
+Each demand point $i$ is covered by an adjuster in each order
+from 1 up to $\ell$
 \begin{align}
   y_{ij}^{k}
   & \leq z_j
@@ -110,13 +111,13 @@ These two constraints
 set the relationship
 between the $z$ and $u$ variables.
 If $u = 1$,
-(\ref{eq:relzu2}) become redundant,
+constraints (\ref{eq:relzu2}) become redundant,
 and contraints (\ref{eq:relzu1}) guarantee
 that the number of adjusters between $i$ and $j$
 is less or equal than $\ell$;
 otherwise
 if $u = 0$,
-(\ref{eq:relzu1}) become redundant,
+constraints (\ref{eq:relzu1}) become redundant,
 and constraints (\ref{eq:relzu2}) guarantee
 that the number of adjusters between $i$ and $j$
 is more than $\ell$.
@@ -131,7 +132,7 @@ is more than $\ell$.
 \end{align}
 assign $z_j$ times $j$ to $i$ if $u_{ij}=1$;
 otherwise
-if becomes redundant.
+it becomes redundant.
 \begin{align}
   \sum_{r \in S_{ij}}{
     z_{r}
@@ -149,7 +150,7 @@ if becomes redundant.
   & i \in V,
   & j \in W
 \end{align}
-analogus to constraints (\ref{eq:relzu1})-(\ref{eq:relzu2})
+Similar to constraints (\ref{eq:relzu1})-(\ref{eq:relzu2})
 these constraints
 set the relationship
 between the $z$ and $v$ variables.

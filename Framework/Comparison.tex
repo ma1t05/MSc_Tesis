@@ -1,14 +1,14 @@
-\section{Comparison}
+\section{Comparison betweem models}
 As can be seen,
 model A
-has a considerable amount of binary variables,
-therefore model B was formulated.
-However, due the lack of allocation variables
+has a considerable amount of binary variables.
+This is why model B was introduced;
+however, due the lack of allocation variables
 we needed to add more variables and constraints
 to ensure a similar behavior.
 
 The size of the models
-as a function of \textit{n}, \textit{m}, \textit{p} and $\ell$
+as function of \textit{n}, \textit{m}, \textit{p} and $\ell$
 is shown in table \ref{tab:modsize}
 
 \begin{table}[h]
@@ -27,11 +27,9 @@ is shown in table \ref{tab:modsize}
   \caption{Models size}
 \end{table}
 
-Since $\ell < p - 2$
-one can notice
-that model B
-has lees variables
-than model A,
-and when $\ell < 2p - 8$
+We can notice that
+since $\ell < p - 2$
+model B has fewer binary variables.
+When $\ell < 2p - 8$
 model B has
-less constraints too.
+less constraints than Model A.

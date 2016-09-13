@@ -79,13 +79,13 @@ Variables:
   \end{cases}$
 \item $y_{ij}^{k} =
   \begin{cases} 
-    1 & \mbox{if the adjuster at site } j \mbox{, is the }
+    1 & \mbox{if the adjuster at site } j \mbox{ is the }
     k\mbox{-th to cover demand point } i \\
     0 & \mbox{otherwise.}
   \end{cases}$
 \end{itemize}
 
-Model
+Model:
 {\small
   \begin{equation}
     \min \, \sum_{j=1}^{m}{
@@ -104,7 +104,7 @@ subject to
   \sum_{j \in W}{x_j}
   & = p
 \end{align}
-Locate only $p$ adjusters
+Locate $p$ adjusters only
 \begin{align}
   \label{eq:3}
   \sum_{j \in W}{y_{ij}^{k}}
