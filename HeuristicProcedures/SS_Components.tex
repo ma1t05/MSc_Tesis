@@ -17,9 +17,22 @@ a collection of diverse trial solutions,
 using an arbitrary trial solution
 (or seed solution) as an input.
 %\input{HeuristicProcedures/alg_ss-init}
-In our case,
-the generator was a multi-start
-consisting of a GRASP.
+In this research
+we develop a Greedy Randomized Adaptive Search Procedure (GRASP)
+as a diversification generator.
+GRASP \cite{feo1995greedy}
+is a multi-start procedure that combines
+the power of greedy heuristics and randomization.
+
+GRASP typically consists of two phases:
+a greedy randomized construction phase
+and an improvement phase.
+In this case,
+our proposed GRASP
+consist only of the construction phase
+because the improvement phase
+is applied in other parts
+of the scatter search algorithm.
 \input{HeuristicProcedures/GRASP}
 
 \subsection{An Improvement Method}
@@ -66,7 +79,7 @@ generates similar solutions as the input,
 %of generated solutions
 %is big (proportional to \textit{p}).
 and Moreover,
-the size of the reference set is dynamicall determined,
+the size of the reference set is dynamically determined,
 according to $p$.
 
 Whenever the Reference Set is update
@@ -87,14 +100,14 @@ These steps are shown in Algorithm \ref{alg:rs_update}.
 After adding solutions to the Reference Set
 by using the quality criterion,
 % Update Diversity
-every solution taht was generated
+every solution that was generated
 and did not enter the Reference Set,
 displaced by a better solution,
 or actually
 a member of the diverse part of the Reference Set
 is evaluated to be in the Reference Set
 as a diverse solution.
-As showns by the Algorithm \ref{alg:rs_updatediv}.
+As shown by the Algorithm \ref{alg:rs_updatediv}.
 \input{HeuristicProcedures/alg_RefSetUpdateDiversity}
 %solutions that do not enter the Reference Set
 %and those that have been removed,
@@ -118,7 +131,7 @@ by the Combination Method.
 We only look for subsets of size two,
 i.e. pairs of solutions;
 because our Reference Set is dynamic,
-at the begining of each iteration
+at the beginning of each iteration
 we label the solutions as new and old
 to identify them,
 and avoid create pairs previous combined.
@@ -132,7 +145,7 @@ we make pairs
 with a new solution
 and an old solution.
 
-Is imporatan to notice that
+Is important to notice that
 the new solutions that enters in the Reference Set
 at the current iteration
 are not part of the subsets

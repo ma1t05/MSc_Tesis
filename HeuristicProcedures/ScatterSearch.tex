@@ -33,32 +33,51 @@ is used as diversity value.
 %\todo{Explicar como se calcula la diversidad}
 
 \subsection{Scatter Search}
-A Scatter-Search
+Scatter-Search metaheuristic
 with a dynamic reference set
-was implemented,
-and a path relinking method
-is used as combination method.
-We used a dynamic reference set
-given that the number of solutions generated
-in each combination is large.
-To enhanced the solutions
+and a path relinking
+as a combination method
+was implemented.
+We opted for a dynamic reference set
+because the number of solutions generated
+in each combination is very large.
+To enhance the solutions
 two improvement methods are included,
 one proposed by Berman \cite{berman1987stochastic},
-and a proposed Local Search.
+and a local search method
+proposed in this research.
 %\todo[inline]{Agregar background de Scatter Search}
 
-In Algorithm \ref{alg:SSInitial} (see below)
-a Reference Set is created,
-consisting in the bests \textit{b} solutions,
-and the most diverse \textit{b} solutions.
+The pseudocode
+of the overall proposed scatter search metaheuristic
+is shown in Algorithm \ref{alg:SSInitial}.
+
+The initial step
+is to generate the initial population
+which is stored in the Reference Set.
+This is depicted in Algorithm \ref{alg:SSInitial}.
+The cardinality of the reference set is \textit{2b}
+(for a given \textit{b}),
+consisting of the bests \textit{b} solutions
+by objetive function value
+and the \textit{b} most diverse solutions.
+%%Pendiente revisar si no reemplaza definicion de diversidad previa
+%To measute the ``distance''
+%between any two solutions,
+%we used the value of the minimum perfect matching
+%between the corresponding center sets
+%of the two solutions.
 
 \input{HeuristicProcedures/alg_ss-template_init}
 
 In Algorithm \ref{alg:SSPhase} (see below),
 each pair of solutions
-is combined using path relinking.
-However,
-since the Reference Set is dynamic
-some solutions are displaced
-before been combined.
+is combined using path relinking procedure.
+Because
+the Reference Set is dynamic
+some pairs are not be combined.
+This is due the fact
+that some solutions
+are removed from the set
+before trying to combine them.
 \input{HeuristicProcedures/alg_ss-template_phase}

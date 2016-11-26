@@ -1,22 +1,35 @@
-\subsubsection{GRASP}
+%\subsubsection{GRASP}
 %Why did you choose GRASP?
 We chose GRASP
 because
 in the proposed problem
 any allocation of sites for adjusters
 is a feasible solution,
-so it was decided to give some intelligence
+thus it was decided to give some intelligence
 to this simple allocation
-instead of choose
+instead of choosing
 random points.
 %What does it consist?
-We start with a partial solution
-(location of a smaller number of adjusters)
-with only one adjuster allocated,
-evaluate each site with a greedy function,
-and choose one from the $\alpha$ best evaluated;
-this process is repeated
-until each adjuster is located.
+In a given iteration of GRASP,
+we have a partial solution (\textit{X})
+where some adjusters have already been located.
+The algorithm has now to decide
+where to place the next adjuster.
+To this end,
+a greedy function is evaluated
+for each potential site,
+and following the GRASP philosophy,
+a restricted candidate list (RCL)
+is former with all the candidate sites
+whose greedy function value fall
+within $\alpha$- of the best possible value.
+The parameter $\alpha$
+is know
+as the GRASP quality function threshold parameter.
+Then an element form the RCL is randomly chosen
+and the adjusters is located at this site.
+The procedure iteratively proceeds until $p$ adjusters
+have been located.
 %Which evaluation functions did you use?
 Several functions were evaluated
 for the constructive algorithm
@@ -36,12 +49,22 @@ between each demand point
 and their nearest adjuster.
 \begin{equation}
   \label{eq:grasp1}
-  \sum_{j=1}^{m}{
-    \sum_{i=1}^{n}{
-      t_{ij}y_{ij}^{1}
+  f_{1}(r)=
+  \sum_{j\in\math{X}}{
+    \sum_{i\in \math{R}_{1}(j,\math{X}\cup\{r\})}{
+      t_{ij}
     }
   }
+  +
+  \sum_{i\in\math{R}_{1}({r},\math{X})}{
+    t_{ir}
+  }
 \end{equation}
+where
+$\math{R}_{k}(j\in\math{W},\math{Y \subset \math{W}})
+=\{i\in\math{V}\mid|S_{ij}\cap\math{Y}|=k-1\}$
+
+
 %Second function
 For the second function,
 %%\todo{Refrasear y simplificar descripcion}
@@ -49,18 +72,24 @@ For the second function,
 include in the evaluation
 the distances
 from each demand point 
-with their $\ell$ nearest adjusters
-($t_{ij}y_{ij}^{k}$),
-plus \textit{idle} probability
+with their $\ell$ nearest adjusters,
+weighted by \textit{idle} probability
 given that is allocated
 at order $k$.
 \begin{equation}
   \label{eq:grasp2}
-  \sum_{j=1}^{m}{
-    \sum_{k=1}^{\ell}{
-      \sum_{i=1}^{n}{
-        h_{ij}^{k}t_{ij}y_{ij}^{k}
+  f_{2}(r)=
+  \sum_{k=1}^{\ell}{
+    \sum_{j\in\math{X}}{
+      \sum_{i\in\math{R}_{k}(j,\math{X}\cup\{r\})}{
+        h_{ij}^{k}t_{ij}
       }
+    }
+  }
+  +
+  \sum_{k=1}^{\ell}{
+    \sum_{i\in\math{R}_{k}(r,\math{X})}{
+      h_{ir}^{k}t_{ir}
     }
   }
 \end{equation}
