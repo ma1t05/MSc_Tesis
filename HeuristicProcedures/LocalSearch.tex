@@ -1,11 +1,19 @@
-\subsubsection{Local Search}
-Due to the cost of assessing each of the different solutions,
-it was decided to design a local search
-to only evaluate a small neighborhood.
-The movement consists in
-removing the server with lowest workload,
-and place it near to the server with greatest workload.
-Looking for a better balance
-workloads.
+\subsection{Proposed Local Search}
+%the move
+The move considered
+is to relocate an agent from its current position
+to a different position.
+%the neighborhood
+The entire neighborhood
+consist of all possible moves
+that can take place from a given solution.
+However,
+due to the high cost of move relocation assessment,
+a reduced neighborhood is considered.
+Thus,
+instead of considering all possible moves,
+the procedure focuses on relocating the adjuster
+with the smallest workload
+to a place around or near the adjuster with the largest workload.
 \missingfigure[figwidth=6cm]{Example of less workload adjuster}
-\missingfigure[figwidth=6cm]{Example of neigborhood to evaluate}
+\missingfigure[figwidth=6cm]{Example of neighborhood to evaluate}
