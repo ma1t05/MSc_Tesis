@@ -118,43 +118,67 @@ As shown by the Algorithm \ref{alg:rs_updatediv}.
 \input{HeuristicProcedures/alg_RefSetUpdateDiversity}
 
 \subsection{A Subset Generation Method}
-This component operates on the Reference Set,
-%to produce a subset of its solutions
-%as a basis for creating combined solutions.
-it is used to create subsets
-of solutions that are combined
-by the Combination Method.
+The subset generation method
+operates on the Reference Set
+and its main role is
+for creating combined solutions.
 \input{HeuristicProcedures/alg_SubsetGeneration}
-We only look for subsets of size two,
-i.e. pairs of solutions;
-because our Reference Set is dynamic,
-at the beginning of each iteration
+In this particular case,
+we only look for subsets of size two,
+that is,
+pairs of solutions,
+because our Reference Set is dynamic.
+To identify the new solutions,
 we label the solutions as new and old
-to identify them,
-and avoid create pairs previous combined.
-To generate the pairs
-we use
-a new solution with another new solution,
-%\todo{Refrasear}
-after
-if there are old solutions
-we make pairs
-with a new solution
-and an old solution.
-
-Is important to notice that
-the new solutions that enters in the Reference Set
-at the current iteration
-are not part of the subsets
+at the start of each iteration.
+We combine first
+the new solutions between them,
+next
+the new solutions with the old.
+The new solutions that enters in the Reference Set
+as a combined solution
+is not part of the subsets
 until the next iteration.
+Each solution generated
+that did not enter the Reference Set,
+displaced by a better solution,
+or actually
+a member of the diverse part of the Refemce Set,
+is evaluated to be in the Reference Set
+as a diverse solution.
 
 \subsection{A Solution Combination Method}
-With this component,
-our scatter search
-transforms a given subset of solutions 
-produced by the Subset Generation Method
-into
-one or more combined solution vectors.
+The goal of the combination method,
+in general,
+is to transform a given subset of solutions
+produced by the subset generation method
+into one or more combined solutions.
+In this particular case,
+the proposed combination method
+takes two differently solutions,
+say $X^1$ and $X^2$ as input
+and apply a path relinking procedure
+between these two solutions
+to generate a path of different solutions
+between $X^1$ and $X^2$.
+Path relinking [CITA1] \todo{Fred Glover, Manuel Laguna and Rafael Marti. Fundamentals of scatter search and path relinking.  Control and Cybernetics, 29(3):653-684 2000.}
+has been very successful
+in many combinatorial optimization problems
+including some location related problems
+such as the $p$-median problem [CITA2] \todo{M.G.C. Resende and R.F. Werneck. A hybrid heuristic for the p-median problem. J. of Heuristics, 10(1):59–88, 2004.}
+and commercial districting [CITA3], to name a few. \todo{R.Z. Ríos-Mercado and H.J. Escalante.
+GRASP with path relinking for commercial districting.
+Expert Systems with Applications,
+44:102-113, 2016}
+
+Since each solution is in fact driven or represented
+by the location of the adjusters (or servers),
+to do the path relinking between any two solutions
+we must first find a match between servers
+form one solution to servers of the other solution.
+According to these,
+we test the following three different strategies
+for finding this matching.
 
 We choose a path relinking as a combination method
 consisting of
@@ -162,26 +186,48 @@ determining a match between servers,
 this match can be
 \begin{itemize}
 \item Perfect Matching:
-  minimizing the distance between paired servers
+  Pair the servers by the corresponding perfect matching problem,
+  that is,
+  by minimizing the distance between paired servers.
 \item Workload Matching:
-  sorting the servers of both solutions
-  according to their workload,
-  and match them according to these sorted lists.
+  The servers in each solution
+  are sorted according to their workloads
+  (from highest to lowest),
+  and then
+  match them according to these sorted lists
+  (e.g.,
+  server with highest workload in solution 1
+  with server with highest load in solution 2
+  and so on).
 \item Random Matching
 \end{itemize}
-Once we have the matching
-we proceed from one solution
-to interchange each server,
-one by one
-until the other solution is reached;
-in each interchange
-we have a new solution.
-To make the interchanges
-we have three options:
+Once the server matching is found,
+we proceed to generate the path
+from solution to the other
+by exchanging one server at a time.
+Each move generates one new solution in the path.
+There are different critera
+for choosing the order of the exchanges.
+The following three strategies are tested.
 \begin{itemize}
-\item Nearest First
-\item Farthest First
+\item Nearest First:
+  Perform the exchange
+  from nearest to farthest,
+  that is,
+  start exchanging the servers
+  whose paired distance
+  is the lowest.
+\item Farthest First:
+  Perform the exchange from farthest to nearest,
+  that is,
+  exchanging the servers
+  whose paired distance
+  is the highest.
 \item Random
 \end{itemize}
 \input{HeuristicProcedures/alg_ss-combination}
+All these different strategies
+pose in algorithm \ref{alg:pr_combination}
+are tested and assessed
+in the following chapter.
 %\todo[inline]{Hacer mas claro la secuencia y metodos}
