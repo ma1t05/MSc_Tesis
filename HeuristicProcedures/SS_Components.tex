@@ -161,15 +161,12 @@ and apply a path relinking procedure
 between these two solutions
 to generate a path of different solutions
 between $X^1$ and $X^2$.
-Path relinking [CITA1] \todo{Fred Glover, Manuel Laguna and Rafael Marti. Fundamentals of scatter search and path relinking.  Control and Cybernetics, 29(3):653-684 2000.}
+Path relinking \cite{glover2000fundamentals}
 has been very successful
 in many combinatorial optimization problems
 including some location related problems
-such as the $p$-median problem [CITA2] \todo{M.G.C. Resende and R.F. Werneck. A hybrid heuristic for the p-median problem. J. of Heuristics, 10(1):59–88, 2004.}
-and commercial districting [CITA3], to name a few. \todo{R.Z. Ríos-Mercado and H.J. Escalante.
-GRASP with path relinking for commercial districting.
-Expert Systems with Applications,
-44:102-113, 2016}
+such as the $p$-median problem \cite{resende2004hybrid}
+and commercial districting \cite{rios2016grasp}, to name a few.
 
 Since each solution is in fact driven or represented
 by the location of the adjusters (or servers),
@@ -206,7 +203,7 @@ we proceed to generate the path
 from solution to the other
 by exchanging one server at a time.
 Each move generates one new solution in the path.
-There are different critera
+There are different criteria
 for choosing the order of the exchanges.
 The following three strategies are tested.
 \begin{itemize}
