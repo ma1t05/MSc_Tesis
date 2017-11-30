@@ -1,7 +1,7 @@
 \section{Proposed Metaheuristic}
 The Scatter Search (SS)
-is an evolutionary approach
-introduced by Glover \cite{glover1977heuristics}
+is a population-based metaheuristic
+whose original ideas are due to Glover \cite{glover1977heuristics}
 as a metaheuristic for integer programming.
 It is based on diversifying the search
 through the solution space.
@@ -48,7 +48,7 @@ and a local search method
 proposed in this research.
 %\todo[inline]{Agregar background de Scatter Search}
 
-The pseudocode
+The pseudo code
 of the overall proposed scatter search metaheuristic
 is shown in Algorithm \ref{alg:SSInitial}.
 
@@ -59,14 +59,18 @@ This is depicted in Algorithm \ref{alg:SSInitial}.
 The cardinality of the reference set is \textit{2b}
 (for a given \textit{b}),
 consisting of the bests \textit{b} solutions
-by objetive function value
+by objective function value
 and the \textit{b} most diverse solutions.
 %%Pendiente revisar si no reemplaza definicion de diversidad previa
-%To measute the ``distance''
-%between any two solutions,
-%we used the value of the minimum perfect matching
-%between the corresponding center sets
-%of the two solutions.
+To measure the ``distance''
+between any two solutions,
+we used the value of the minimum perfect matching
+between the corresponding center sets
+of the two solutions.
+That means that
+a higher cost
+indicates that
+the solutions are distant.
 
 \input{HeuristicProcedures/alg_ss-template_init}
 
